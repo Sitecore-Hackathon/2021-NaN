@@ -1,4 +1,6 @@
-﻿namespace Hackathon.MLBox.Foundation.Common.Models.Sitecore
+﻿using Hackathon.MLBox.Foundation.Common.Models.Metrics;
+
+namespace Hackathon.MLBox.Foundation.Common.Models.Sitecore
 {
     using System;
     using System.Collections.Generic;
@@ -10,7 +12,8 @@
     {
         public CustomerItem()
         {
-            Invoices = new List<InvoceItem>();
+            Invoices = new List<InvoiceItem>();
+            RFM= new RFMScore();
         }
 
         /// <summary>
@@ -21,6 +24,8 @@
         /// <summary>
         /// Invoices
         /// </summary>
-        public IList<InvoceItem> Invoices { get; set; }
+        public IList<InvoiceItem> Invoices { get; set; }
+
+        public RFMScore RFM { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Hackathon.NaN.MLBox.Project.Demo.Models
+﻿namespace Hackathon.MLBox.Project.Demo.Models
 {
     public class ParseDataResult
     {

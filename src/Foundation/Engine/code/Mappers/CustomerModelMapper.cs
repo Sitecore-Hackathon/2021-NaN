@@ -1,38 +1,37 @@
-﻿namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
+﻿using System.Collections.Generic;
+using System.Linq;
+using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
+using Sitecore.Processing.Engine.Projection;
+
+namespace Hackathon.MLBox.Foundation.Engine.Mappers
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models;
-    using Sitecore.Processing.Engine.Projection;
-
-
     /// <summary>
     /// Mapping customer models
     /// </summary>
     public static class CustomerModelMapper
     {
 
-        public static List<PurchaseInvoice> MapToCustomers(IReadOnlyList<IDataRow> dataRows)
+        public static List<InvoiceItem> MapToCustomers(IReadOnlyList<IDataRow> dataRows)
         {
             return dataRows.Select(data => data.ToPurchaseOutcome()).ToList();
         }
 
 
-        public static PurchaseInvoice ToPurchaseOutcome(this IDataRow dataRow)
+        public static InvoiceItem ToPurchaseOutcome(this IDataRow dataRow)
         {
-            var result = new PurchaseInvoice();
+            var result = new InvoiceItem();
             
-            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseInvoice.ContactId));
+            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(InvoiceItem.ContactId));
             if (customerId != null)
-                result.ContactId = dataRow.GetGuid(dataRow.Schema.GetFieldIndex(nameof(PurchaseInvoice.ContactId)));
+                result.ContactId = dataRow.GetGuid(dataRow.Schema.GetFieldIndex(nameof(InvoiceItem.ContactId)));
 
-            var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseInvoice.Timestamp));
+            var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(InvoiceItem.Timestamp));
             if (date != null)
-                result.Timestamp = dataRow.GetDateTime(dataRow.Schema.GetFieldIndex(nameof(PurchaseInvoice.Timestamp)));
+                result.Timestamp = dataRow.GetDateTime(dataRow.Schema.GetFieldIndex(nameof(InvoiceItem.Timestamp)));
 
-            var price = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseInvoice.Value));
+            var price = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(InvoiceItem.Value));
             if (price != null)
-                result.Value = (float) dataRow.GetDouble(dataRow.Schema.GetFieldIndex(nameof(PurchaseInvoice.Value)));
+                result.Value = (float) dataRow.GetDouble(dataRow.Schema.GetFieldIndex(nameof(InvoiceItem.Value)));
 
             return result;
         }

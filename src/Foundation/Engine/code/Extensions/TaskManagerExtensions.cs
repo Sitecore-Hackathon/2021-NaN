@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Facets;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Models;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Workers;
+using Hackathon.MLBox.Foundation.Engine.Predict.Workers;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Models;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers;
 using Sitecore.Processing.Engine.Abstractions;
@@ -14,7 +12,7 @@ using Sitecore.Processing.Tasks.Options.Workers.ML;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Extensions
+namespace Hackathon.MLBox.Foundation.Engine.Extensions
 {
     public static class TaskManagerExtensionsCustom
     {
@@ -29,8 +27,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Extensions
             // datasource for ContactModel protection 
             var contactDataSourceOptionsDictionary = new ContactDataSourceOptionsDictionary(new ContactExpandOptions(PersonalInformation.DefaultFacetKey,
                     EmailAddressList.DefaultFacetKey,
-                    ContactBehaviorProfile.DefaultFacetKey,
-                    RfmContactFacet.DefaultFacetKey)
+                    ContactBehaviorProfile.DefaultFacetKey)
                 , 5, 10);
 
             var modelTrainingOptions = new ModelTrainingTaskOptions(
@@ -51,12 +48,12 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Extensions
                 modelTrainingOptions.ModelOptions);
 
 
-            var evaluationDictionary = new EvaluationWorkerOptionsDictionary(
-                 typeof(RfmEvaluationWorker).AssemblyQualifiedName,
-                typeof(ContactModel).AssemblyQualifiedName,
-                new Dictionary<string, string> { ["TestCaseId"] = "Id" },
-                "Evaluator.Schema",
-                expiresAfter);
+            //var evaluationDictionary = new EvaluationWorkerOptionsDictionary(
+            //     typeof(RfmEvaluationWorker).AssemblyQualifiedName,
+            //    typeof(ContactModel).AssemblyQualifiedName,
+            //    new Dictionary<string, string> { ["TestCaseId"] = "Id" },
+            //    "Evaluator.Schema",
+            //    expiresAfter);
 
 
             // Register chain of Tasks
@@ -99,13 +96,13 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Extensions
                 expiresAfter).ConfigureAwait(false);
 
             // 4) Register Evaluate worker
-            Guid evaluateTaskId = await taskManager.RegisterDistributedTaskAsync(
-                    contactDataSourceOptionsDictionary,
-                    evaluationDictionary,
-                    // execute after Train worker
-                    new[] { trainTaskId },
-                    expiresAfter)
-                .ConfigureAwait(false);
+            //Guid evaluateTaskId = await taskManager.RegisterDistributedTaskAsync(
+            //        contactDataSourceOptionsDictionary,
+            //        evaluationDictionary,
+            //        // execute after Train worker
+            //        new[] { trainTaskId },
+            //        expiresAfter)
+            //    .ConfigureAwait(false);
         }
     }
 }

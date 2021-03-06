@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Facets;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Models;
-using Microsoft.Extensions.DependencyInjection;
+using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers;
 using Microsoft.Extensions.Logging;
 using Sitecore.Processing.Engine.Abstractions;
 using Sitecore.Processing.Engine.ML;
@@ -13,9 +10,8 @@ using Sitecore.Processing.Engine.ML.Abstractions;
 using Sitecore.Processing.Engine.Projection;
 using Sitecore.Processing.Engine.Storage.Abstractions;
 using Sitecore.XConnect;
-using Sitecore.XConnect.Collection.Model;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
+namespace Hackathon.MLBox.Foundation.Engine.Train.Workers
 {
     
     public class RfmTrainingWorker : IDeferredWorker
@@ -75,48 +71,9 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
             }
             ModelStatistics modelStatistics = await _model.TrainAsync(_options.SchemaName, token, tableDefinitionList.ToArray()).ConfigureAwait(false);
         
-            if (modelStatistics !=null)
-                await UpdateRfmFacets(modelStatistics as RfmStatistics, token);
         }
 
-        public async Task UpdateRfmFacets(RfmStatistics statistics, CancellationToken token)
-        {
-            using (IServiceScope scope = _serviceProvider.CreateScope())
-            {
-                using (var xdbContext = scope.ServiceProvider.GetService<IXdbContext>())
-                {
-                    foreach (var identifier in statistics.Customers)
-                    {
-                        var reference = new IdentifiedContactReference(XConnectService.IdentificationSource, identifier.CustomerId.ToString());
-                        var contact = await xdbContext.GetContactAsync(reference, new ContactExpandOptions(
-                            PersonalInformation.DefaultFacetKey,
-                            EmailAddressList.DefaultFacetKey,
-                            ContactBehaviorProfile.DefaultFacetKey,
-                            RfmContactFacet.DefaultFacetKey
-                        ));
-                        if (contact != null)
-                        {
-                            var rfmFacet = contact.GetFacet<RfmContactFacet>(RfmContactFacet.DefaultFacetKey) ?? new RfmContactFacet();
-                            rfmFacet.R = identifier.R;
-                            rfmFacet.F = identifier.F;
-                            rfmFacet.M = identifier.M;
-                            rfmFacet.Recency = identifier.Recency;
-                            rfmFacet.Frequency = identifier.Frequency;
-                            rfmFacet.Monetary = (double)identifier.Monetary;
-                            xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
-
-                            _logger.LogInformation(string.Format("Update RFM info: customerId={0}, R={1}, F={2}, M={3}, Recency={4}, Frequency={5}, Monetary={6}",
-                                identifier.CustomerId, rfmFacet.R, rfmFacet.F, rfmFacet.M, rfmFacet.Recency, rfmFacet.Frequency, rfmFacet.Monetary));
-
-                            await xdbContext.SubmitAsync(token);
-                        }
-                    }
-
-                  
-                }
-            }
-        }
-
+       
         public void Dispose()
         {
             Dispose(true);

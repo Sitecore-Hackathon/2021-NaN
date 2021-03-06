@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using Sitecore.Pipelines;
 
-namespace Hackathon.NaN.MLBox.Project.Demo.Routes
+namespace Hackathon.MLBox.Project.Demo.Routes
 {
     public class InitRoutes
     {

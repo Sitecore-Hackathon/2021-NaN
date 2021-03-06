@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Hackathon.MLBox.Project.Demo.Models;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Agents;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services;
-using Hackathon.NaN.MLBox.Project.Demo.Models;
 
-namespace Hackathon.NaN.MLBox.Project.Demo.Controllers
+namespace Hackathon.MLBox.Project.Demo.Controllers
 {
     public class ContactApiController : ApiController
     {

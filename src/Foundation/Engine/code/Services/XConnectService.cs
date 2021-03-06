@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models;
-using Sitecore.Data;
-using Sitecore.Data.Items;
+using Hackathon.MLBox.Foundation.Common.Models;
 using Sitecore.Diagnostics;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
@@ -68,7 +65,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
 
         // if addWebVisit=true, fake webvisit will be created for interaction 
         // it is needed if you want to populate interaction country (to use contacts country for ML data model)
-        public async Task<bool> Add(CustomerExcel purchase, bool addWebVisit = false)
+        public async Task<bool> Add(Customer purchase, bool addWebVisit = false)
         {
             using (XConnectClient client = SitecoreXConnectClientConfiguration.GetClient())
             {

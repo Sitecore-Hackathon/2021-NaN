@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models;
+using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
 using Sitecore.Processing.Engine.ML.Abstractions;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Models
+namespace Hackathon.MLBox.Foundation.Engine.Train.Models
 {
     public class RfmStatistics: ModelStatistics
     {
-        public List<Customer> Customers { get; set; }
+        public List<CustomerItem> Customers { get; set; }
     }
 }

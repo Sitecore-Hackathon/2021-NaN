@@ -119,25 +119,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\DemoAgent.cs" />
-    <Compile Include="Conditionals\RfmMatch.cs" />
     <Compile Include="Extensions\TaskManagerExtensions.cs" />
-    <Compile Include="Facets\RfmContactFacet.cs" />
-    <Compile Include="Import\ExcelImportProcessor.cs" />
     <Compile Include="Interfaces\ISettingsStorage.cs" />
-    <Compile Include="Mappers\ContactModelMapper.cs" />
     <Compile Include="Mappers\CustomerModelMapper.cs" />
-    <Compile Include="Models\XConnect\XdbPurchaseContactModel.cs" />
     <Compile Include="Predict\Models\ClusteringPrediction.cs" />
-    <Compile Include="Predict\Models\ContactModel.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerBusinessValue.cs" />
     <Compile Include="Agents\SitecoreTaskManager.cs" />
     <Compile Include="Predict\Models\ClusteringData.cs" />
     <Compile Include="Predict\Models\PredictionResult.cs" />
     <Compile Include="Settings\DataStorage.cs" />
     <Compile Include="Settings\Model.cs" />
     <Compile Include="Train\Models\PurchaseInteractionModel.cs" />
-    <Compile Include="Models\PurchaseInvoice.cs" />
     <Compile Include="Services\RfmCalculateService.cs" />
     <Compile Include="Predict\Workers\RfmEvaluationWorker.cs" />
     <Compile Include="Train\Models\RfmStatistics.cs" />

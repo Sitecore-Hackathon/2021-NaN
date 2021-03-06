@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 
-namespace Hackathon.NaN.MLBox.Project.Demo.IoC
+namespace Hackathon.MLBox.Project.Demo.IoC
 {
     public class DemoServicesConfigurator : IServicesConfigurator
     {

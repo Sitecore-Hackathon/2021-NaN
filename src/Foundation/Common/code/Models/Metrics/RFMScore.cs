@@ -8,16 +8,16 @@
         /// <summary>
         /// Recency
         /// </summary>
-        public float R { get; set; }
+        public int R { get; set; }
 
         /// <summary>
         /// Frequency
         /// </summary>
-        public float F { get; set; }
+        public int F { get; set; }
 
         /// <summary>
         /// Monetary
         /// </summary>
-        public float M { get; set; }
+        public int M { get; set; }
     }
 }

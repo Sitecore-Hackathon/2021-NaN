@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class InvoceItem
+    public class InvoiceItem
     {
         /// <summary>
         /// Customer contcat Id

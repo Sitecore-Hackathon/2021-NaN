@@ -53,15 +53,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
-      <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
-      <Name>Hackathon.MLBox.Foundation.Engine</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Sitecore.XConnect.Core">
       <Version>10.1.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
+      <Project>{0d1a5ff4-e76f-48d3-8211-92085d45e2ce}</Project>
+      <Name>Hackathon.MLBox.Foundation.Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

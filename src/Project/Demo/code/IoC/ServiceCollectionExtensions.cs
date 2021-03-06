@@ -10,7 +10,7 @@ using System.Web.Http.Controllers;
 using System.Web.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Hackathon.NaN.MLBox.Project.Demo.IoC
+namespace Hackathon.MLBox.Project.Demo.IoC
 {
     public static class ServiceCollectionExtensions
     {

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Facets;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sitecore.Processing.Engine.ML.Abstractions;
 using Sitecore.Processing.Engine.ML.Workers;
@@ -14,7 +10,7 @@ using Sitecore.Processing.Tasks.Options.Workers.ML;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Workers
+namespace Hackathon.MLBox.Foundation.Engine.Predict.Workers
 {
     public class RfmEvaluationWorker : EvaluationWorker<Contact>
     {
@@ -33,47 +29,9 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Workers
         }
 
 
-        // Update Cluster for Contact
         protected override async Task ConsumeEvaluationResultsAsync(IReadOnlyList<Contact> entities, IReadOnlyList<object> evaluationResults, CancellationToken token)
         {
-            var contactIdentifiers = entities
-                .SelectMany(x =>
-                    x.Identifiers.Where(s => s.Source == XConnectService.IdentificationSourceEmail));
 
-            var predictionResults = evaluationResults.ToPredictionResults();
-
-            using (IServiceScope scope = _serviceProvider.CreateScope())
-            {
-                using (var xdbContext = scope.ServiceProvider.GetRequiredService<IXdbContext>())
-                {
-                    foreach (var identifier in contactIdentifiers)
-                    {
-                        // filter unknown contacts (with Email=null)
-                        if (predictionResults.Any(x => x.Email.Equals(identifier.Identifier)))
-                        {
-                            var reference = new IdentifiedContactReference(identifier.Source, identifier.Identifier);
-                            var contact = await xdbContext.GetContactAsync(reference, new ContactExpandOptions(
-                                PersonalInformation.DefaultFacetKey,
-                                EmailAddressList.DefaultFacetKey,
-                                ContactBehaviorProfile.DefaultFacetKey,
-                                RfmContactFacet.DefaultFacetKey
-                            ));
-                            if (contact != null)
-                            {
-                                var rfmFacet = contact.GetFacet<RfmContactFacet>(RfmContactFacet.DefaultFacetKey) ?? new RfmContactFacet();
-                                 xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
-
-                                _logger.LogInformation(string.Format("RFM info: email={0}, R={1}, F={2}, M={3}, Recency={4}, Frequency={5}, Monetary={6}",
-                                    identifier.Identifier, rfmFacet.R, rfmFacet.F, rfmFacet.M, rfmFacet.Recency, rfmFacet.Frequency, rfmFacet.Monetary));
-
-                            }
-                        }
-                       
-                    }
-
-                    await xdbContext.SubmitAsync(token);
-                }
-            }
         }
     }
 }
