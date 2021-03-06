@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Foundation.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MarketingAutomation", "MarketingAutomation", "{41729E2C-314E-4502-B981-B4507232D0EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.NaN.MLBox.Foundation.MarketingAutomation", "src\Foundation\MarketingAutomation\code\Hackathon.NaN.MLBox.Foundation.MarketingAutomation.csproj", "{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Foundation.MarketingAutomation", "src\Foundation\MarketingAutomation\code\Hackathon.MLBox.Foundation.MarketingAutomation.csproj", "{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Foundation.Shared", "src\Foundation\Shared\code\Hackathon.MLBox.Foundation.Shared.csproj", "{0BFA457A-1430-44EA-BFE2-4A044E4DEF1D}"
 EndProject

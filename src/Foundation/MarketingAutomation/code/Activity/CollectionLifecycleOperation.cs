@@ -1,4 +1,4 @@
-﻿namespace Hackathon.NaN.MLBox.Foundation.MarketingAutomation.Activity
+﻿namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
 {
     public enum CollectionLifecycleOperation
     {

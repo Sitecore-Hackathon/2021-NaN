@@ -8,7 +8,6 @@ using Hackathon.MLBox.Foundation.Shared.Helpers;
 using Hackathon.MLBox.Foundation.Shared.Models.Settings;
 using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using ProtoBuf;
-using Sitecore.ApplicationCenter.Applications;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services
 {
@@ -60,18 +59,18 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
                     StatHelper stat = new StatHelper();
                     Segments segments = new Segments()
                     {
-                        MonetaryQ1 = stat.Percentile(monetaryList, Q1),
-                        MonetaryQ3 = stat.Percentile(monetaryList, Q3),
+                        MonetaryQ1 = stat.Percentile(monetaryList.ToList().OrderBy(x => x).ToArray(), Q1),
+                        MonetaryQ3 = stat.Percentile(monetaryList.ToList().OrderBy(x => x).ToArray(), Q3),
                         MonetaryMin = monetaryList.Min(),
                         MonetaryMax = monetaryList.Max(),
 
-                        FrequencyQ1 = stat.Percentile(frequencyList, Q1),
-                        FrequencyQ3 = stat.Percentile(frequencyList, Q3),
+                        FrequencyQ1 = stat.Percentile(frequencyList.ToList().OrderBy(x => x).ToArray(), Q1),
+                        FrequencyQ3 = stat.Percentile(frequencyList.ToList().OrderBy(x => x).ToArray(), Q3),
                         FrequencyMax = frequencyList.Max(),
                         FrequencyMin = frequencyList.Min(),
 
-                        RecencyQ1 = stat.Percentile(recencyList, Q1),
-                        RecencyQ3 = stat.Percentile(recencyList, Q3),
+                        RecencyQ1 = stat.Percentile(recencyList.ToList().OrderBy(x => x).ToArray(), Q1),
+                        RecencyQ3 = stat.Percentile(recencyList.ToList().OrderBy(x => x).ToArray(), Q3),
                         RecencyMin = recencyList.Min(),
                         RecencyMax = recencyList.Max()
                     };
@@ -182,7 +181,8 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
 
         private void Save(Segments segments)
         {
-            using (var file = File.Create(HttpContext.Current.Server.MapPath(string.Format($"{ Consts.WorkFolder}/{ Consts.SegmentsModel}"))))
+            var fn = Path.Combine(AppContext.BaseDirectory, Consts.SegmentsModel);
+            using (var file = File.Create(fn))
             {
                 Serializer.Serialize(file, segments);
             }
@@ -191,7 +191,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
         private Segments Load()
         {
             Segments model = null;
-            using (var file = File.OpenRead(HttpContext.Current.Server.MapPath(string.Format($"{ Consts.WorkFolder}/{ Consts.SegmentsModel}"))))
+            using (var file = File.OpenRead(Path.Combine(AppContext.BaseDirectory,  Consts.SegmentsModel)))
             {
                 model = Serializer.Deserialize<Segments>(file);
             }

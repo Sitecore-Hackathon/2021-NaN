@@ -7,8 +7,8 @@
     <ProjectGuid>{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hackathon.NaN.MLBox.Foundation.MarketingAutomation</RootNamespace>
-    <AssemblyName>Hackathon.NaN.Foundation.MarketingAutomation</AssemblyName>
+    <RootNamespace>Hackathon.MLBox.Foundation.MarketingAutomation</RootNamespace>
+    <AssemblyName>Hackathon.MLBox.Foundation.MarketingAutomation</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

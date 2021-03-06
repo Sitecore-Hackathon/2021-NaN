@@ -4,6 +4,6 @@
     {
         public const string WorkFolder = "~/App_Data";
 
-        public const string SegmentsModel = "segments.bin";
+        public const string SegmentsModel = "MLBox.bin";
     }
 }

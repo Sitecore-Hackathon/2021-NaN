@@ -15,7 +15,7 @@ using Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder;
 using Sitecore.Xdb.MarketingAutomation.Core.Activity;
 using Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan;
 
-namespace Hackathon.NaN.MLBox.Foundation.MarketingAutomation.Activity
+namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
 {
     public class PredictiveRevenueListener : BaseActivity
     {

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Hackathon.NaN.MLBox.Foundation.MarketingAutomation")]
+[assembly: AssemblyTitle("Hackathon.MLBox.Foundation.MarketingAutomation")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Hackathon.NaN.MLBox.Foundation.MarketingAutomation")]
+[assembly: AssemblyProduct("Hackathon.MLBox.Foundation.MarketingAutomation")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
