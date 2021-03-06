@@ -180,7 +180,7 @@
             this.txtApi.Name = "txtApi";
             this.txtApi.Size = new System.Drawing.Size(386, 20);
             this.txtApi.TabIndex = 0;
-            this.txtApi.Text = "http://sc91.sc";
+            this.txtApi.Text = "https://nan2021sc.dev.local";
             // 
             // lblServer
             // 

@@ -30,7 +30,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
                 double m = 0;
                 foreach (PurchaseInvoice invoice in customer.Invoices)
                 {
-                    m =invoice.Value;
+                    m +=invoice.Value;
                 }
 
                 if (m <= 0) // broken data
