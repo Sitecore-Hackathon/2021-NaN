@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Extensions;
+using Hackathon.MLBox.Foundation.Common.Extensions;
 
 namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
 {
