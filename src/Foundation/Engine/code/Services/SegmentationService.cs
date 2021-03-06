@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Hackathon.MLBox.Foundation.Common.Extensions;
-using Hackathon.MLBox.Foundation.Common.Helpers;
-using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Storage;
+using Hackathon.MLBox.Foundation.Shared.Extensions;
+using Hackathon.MLBox.Foundation.Shared.Helpers;
+using Hackathon.MLBox.Foundation.Shared.Models.Settings;
+using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using ProtoBuf;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services

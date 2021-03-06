@@ -1,4 +1,4 @@
-﻿namespace Hackathon.MLBox.Foundation.Common.Models.Metrics
+﻿namespace Hackathon.MLBox.Foundation.Shared.Models.Metrics
 {
     public enum SegmentType
     {

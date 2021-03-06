@@ -1,6 +1,6 @@
-﻿using Hackathon.MLBox.Foundation.Common.Models.Metrics;
+﻿using Hackathon.MLBox.Foundation.Shared.Models.Metrics;
 
-namespace Hackathon.MLBox.Foundation.Common.Models.Sitecore
+namespace Hackathon.MLBox.Foundation.Shared.Models.Sitecore
 {
     using System;
     using System.Collections.Generic;

@@ -1,11 +1,12 @@
 ﻿/// <summary>
 /// Linq extensions
 /// </summary>
-namespace Hackathon.MLBox.Foundation.Common.Extensions
-{
-    using System;
-    using System.Collections.Generic;
 
+using System;
+using System.Collections.Generic;
+
+namespace Hackathon.MLBox.Foundation.Shared.Extensions
+{
     public static class LinqExtensions
     {
 

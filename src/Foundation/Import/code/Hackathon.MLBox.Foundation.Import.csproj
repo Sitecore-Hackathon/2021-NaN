@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
-      <Project>{746b0fdb-63b9-48ed-a437-70d0067cb620}</Project>
-      <Name>Hackathon.MLBox.Foundation.Common</Name>
+    <ProjectReference Include="..\..\Shared\code\Hackathon.MLBox.Foundation.Shared.csproj">
+      <Project>{0bfa457a-1430-44ea-bfe2-4a044e4def1d}</Project>
+      <Name>Hackathon.MLBox.Foundation.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
