@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Hackathon.MLBox.Foundation.Common.Models;
+using Hackathon.MLBox.Foundation.Common.Models.DTO;
 using Sitecore.Diagnostics;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Client;

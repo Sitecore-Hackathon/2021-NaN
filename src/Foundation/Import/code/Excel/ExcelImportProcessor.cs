@@ -1,13 +1,14 @@
-﻿namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
-{
-    using Hackathon.MLBox.Foundation.Common.Models;
-    using OfficeOpenXml;
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.IO;
-    using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using Hackathon.MLBox.Foundation.Common.Models;
+using Hackathon.MLBox.Foundation.Common.Models.DTO;
+using OfficeOpenXml;
 
+namespace Hackathon.MLBox.Foundation.Import.Excel
+{
     public class ExcelImportProcessor
     {
         public List<Customer> GetImportData(Stream fileStream)

@@ -1,7 +1,7 @@
-﻿namespace Hackathon.MLBox.Foundation.Common.Models
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Hackathon.MLBox.Foundation.Common.Models.DTO
+{
     /// <summary>
     /// Customer
     /// </summary>
