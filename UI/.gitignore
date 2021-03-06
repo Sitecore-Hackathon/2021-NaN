@@ -40,4 +40,4 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 node_modules/
-codegen/
+/codegen/
