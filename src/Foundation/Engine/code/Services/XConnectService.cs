@@ -15,51 +15,29 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
         public static string IdentificationSource => "demo";
         public static string IdentificationSourceEmail => "demo_email";
 
-        public async Task<bool> CreateContact(
-            string source,
-            string identifier,
-            string email)
+      
+        public async Task<Contact> GetContact(string identifier)
         {
             using (XConnectClient client = SitecoreXConnectClientConfiguration.GetClient())
             {
-                try
-                {
-                    IdentifiedContactReference reference = new IdentifiedContactReference(source, identifier);
-
-                    var contactTask = client.GetAsync(
-                        reference,
-                        new ContactExpandOptions()
-                    );
-
-                    Contact existingContact = await contactTask;
-
-                    if (existingContact != null)
+                IdentifiedContactReference reference = new IdentifiedContactReference(IdentificationSource, identifier);
+                var customer = await client.GetAsync(
+                    reference,
+                    new ContactExpandOptions(
+                        PersonalInformation.DefaultFacetKey,
+                        EmailAddressList.DefaultFacetKey,
+                        ContactBehaviorProfile.DefaultFacetKey
+                    )
                     {
-                        return false;
+                        Interactions = new RelatedInteractionsExpandOptions
+                        {
+                            StartDateTime = DateTime.MinValue,
+                            EndDateTime = DateTime.MaxValue
+                        }
                     }
+                );
 
-
-                    Contact contact = new Contact(new ContactIdentifier(source, identifier, ContactIdentifierType.Known));
-
-                    var preferredEmail = new EmailAddress(email, true);
-                    var emails = new EmailAddressList(preferredEmail, "Work");
-
-                    client.AddContact(contact);
-                    client.SetEmails(contact, emails);
-
-                    var identifierEmail = new ContactIdentifier(IdentificationSourceEmail, email, ContactIdentifierType.Known);
-
-                    client.AddContactIdentifier(contact, identifierEmail);
-
-                    await client.SubmitAsync();
-
-                    return true;
-                }
-                catch (XdbExecutionException ex)
-                {
-                    Log.Error(ex.Message, ex, this);
-                    return false;
-                }
+                return customer;
             }
         }
 
@@ -84,8 +62,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
                             Interactions = new RelatedInteractionsExpandOptions
                             {
                                 StartDateTime = DateTime.MinValue,
-                                EndDateTime = DateTime.MaxValue,
-                                Limit = 100
+                                EndDateTime = DateTime.MaxValue
                             }
                         }
                     );
@@ -106,75 +83,82 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
                         
                         client.AddContactIdentifier(customer, identifierEmail);
                         client.Submit();
-                    }
 
-                    var channel = Guid.Parse("DF9900DE-61DD-47BF-9628-058E78EF05C6");
-                    var interaction = new Interaction(customer, InteractionInitiator.Contact, channel, "demo app");
-
-                    if (addWebVisit)
-                    {
-                        //Add Device profile
+                        var channel = Guid.Parse("DF9900DE-61DD-47BF-9628-058E78EF05C6");
                         DeviceProfile newDeviceProfile = new DeviceProfile(Guid.NewGuid()) { LastKnownContact = customer };
                         client.AddDeviceProfile(newDeviceProfile);
-                        interaction.DeviceProfile = newDeviceProfile;
 
-                        //Add fake Ip info
-                        IpInfo fakeIpInfo = new IpInfo("127.0.0.1") { BusinessName = "Home"};
-                        client.SetFacet(interaction, IpInfo.DefaultFacetKey, fakeIpInfo);
-
-                        // Add fake webvisit
-                        // Create a new web visit facet model
-                        var webVisitFacet = new WebVisit
+                        var orders = purchase.Invoices.GroupBy(x => x.Number);
+                        foreach (var order in orders)
                         {
-                            Browser =
-                                new BrowserData
+                            var total = order.Sum(x => x.Price * x.Quantity);
+                            var data = order.First().TimeStamp;
+                            var currency = order.First().Currency;
+
+                            var interaction = new Interaction(customer, InteractionInitiator.Contact, channel, "demo app");
+                            var outcome = new Outcome(new Guid("{9016E456-95CB-42E9-AD58-997D6D77AE83}"), data, currency, total);
+
+                            interaction.Events.Add(outcome);
+                            if (addWebVisit)
+                            {
+                                //Add Device profile
+
+                                interaction.DeviceProfile = newDeviceProfile;
+
+                                //Add fake Ip info
+                                IpInfo fakeIpInfo = new IpInfo("127.0.0.1") { BusinessName = "Home" };
+                                client.SetFacet(interaction, IpInfo.DefaultFacetKey, fakeIpInfo);
+
+                                // Add fake webvisit
+                                // Create a new web visit facet model
+                                var webVisitFacet = new WebVisit
                                 {
-                                    BrowserMajorName = "Chrome",
-                                    BrowserMinorName = "Desktop",
-                                    BrowserVersion = "22.0"
-                                },
-                            Language = "en",
-                            OperatingSystem =
-                                new OperatingSystemData { Name = "Windows", MajorVersion = "10", MinorVersion = "4" },
-                            Referrer = "https://www.google.com",
-                            Screen = new ScreenData { ScreenHeight = 1080, ScreenWidth = 685 },
-                            SearchKeywords = "sitecore",
-                            SiteName = "website"
-                        };
+                                    Browser =
+                                        new BrowserData
+                                        {
+                                            BrowserMajorName = "Chrome",
+                                            BrowserMinorName = "Desktop",
+                                            BrowserVersion = "22.0"
+                                        },
+                                    Language = "en",
+                                    OperatingSystem =
+                                        new OperatingSystemData { Name = "Windows", MajorVersion = "10", MinorVersion = "4" },
+                                    Referrer = "https://www.google.com",
+                                    Screen = new ScreenData { ScreenHeight = 1080, ScreenWidth = 685 },
+                                    SearchKeywords = "sitecore",
+                                    SiteName = "website"
+                                };
 
-                        // Populate data about the web visit
+                                // Populate data about the web visit
 
-                        var itemId = Guid.Parse("110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9");
-                        var itemVersion = 1;
+                                var itemId = Guid.Parse("110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9");
+                                var itemVersion = 1;
 
-                        // First page view
-                        var datetime = purchase.Invoices.FirstOrDefault() == null
-                            ? DateTime.Now
-                            : purchase.Invoices.First().TimeStamp.ToUniversalTime();
-                        PageViewEvent pageView = new PageViewEvent(datetime,
-                            itemId, itemVersion, "en")
-                        {
-                            ItemLanguage = "en",
-                            Duration = new TimeSpan(3000),
-                            Url = "/home"
-                        };
-                        // client.SetFacet(interaction, WebVisit.DefaultFacetKey, webVisitFacet);
-                        
-                        interaction.Events.Add(pageView);
-                        client.SetWebVisit(interaction, webVisitFacet);
+                                // First page view
+                                var datetime = purchase.Invoices.FirstOrDefault() == null
+                                    ? DateTime.Now
+                                    : purchase.Invoices.First().TimeStamp.ToUniversalTime();
+                                PageViewEvent pageView = new PageViewEvent(datetime,
+                                    itemId, itemVersion, "en")
+                                {
+                                    ItemLanguage = "en",
+                                    Duration = new TimeSpan(3000),
+                                    Url = "/home"
+                                };
+                                // client.SetFacet(interaction, WebVisit.DefaultFacetKey, webVisitFacet);
+
+                                interaction.Events.Add(pageView);
+                                client.SetWebVisit(interaction, webVisitFacet);
+                            }
+                            client.AddInteraction(interaction);
+                        }
+
+
+
+                        await client.SubmitAsync();
                     }
 
-
-
-                    foreach (var invoice in purchase.Invoices)
-                    {
-                        var outcome = new Outcome(new Guid("{9016E456-95CB-42E9-AD58-997D6D77AE83}"), invoice.TimeStamp, invoice.Currency, invoice.Price * invoice.Quantity);
-                        interaction.Events.Add(outcome);
-                    }
-
-                    client.AddInteraction(interaction);
-
-                    await client.SubmitAsync();
+                  
 
                     return true;
                 }

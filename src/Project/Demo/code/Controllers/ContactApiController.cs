@@ -25,6 +25,15 @@ namespace Hackathon.MLBox.Project.Demo.Controllers
            return true;
         }
 
+        [HttpGet]
+        public async Task<float> Predict(string contactId, int window)
+        {
+            var xconnect = new XConnectService();
+            var contact = await xconnect.GetContact(contactId);
+            var prediction = new TimeseriesService().PredictMonetary(contact, window);
+            return prediction;
+        }
+
         // used for upload orders history from excel to xConnect by using Demo-Data-Explorer(can takes ~15 minutes)
         [HttpPost]
         public async Task<ParseDataResult> UploadClientsHistory()
