@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3ED07EC9-BAF1-4129-8680-6E99287BDA7F}</ProjectGuid>
+    <ProjectGuid>{746B0FDB-63B9-48ED-A437-70D0067CB620}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hackathon.MLBox.Foundation.Common</RootNamespace>
