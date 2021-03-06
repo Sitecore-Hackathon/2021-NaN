@@ -122,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\DemoAgent.cs" />
-    <Compile Include="Conditionals\ClusterMatch.cs" />
     <Compile Include="Conditionals\RfmMatch.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\TaskManagerExtensions.cs" />

@@ -61,11 +61,10 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Workers
                             if (contact != null)
                             {
                                 var rfmFacet = contact.GetFacet<RfmContactFacet>(RfmContactFacet.DefaultFacetKey) ?? new RfmContactFacet();
-                                rfmFacet.Cluster = predictionResults.First(x => x.Email.Equals(identifier.Identifier)).Cluster;
-                                xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
+                                 xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
 
-                                _logger.LogInformation(string.Format("RFM info: email={0}, R={1}, F={2}, M={3}, Recency={4}, Frequency={5}, Monetary={6}, CLUSTER={7}",
-                                    identifier.Identifier, rfmFacet.R, rfmFacet.F, rfmFacet.M, rfmFacet.Recency, rfmFacet.Frequency, rfmFacet.Monetary, rfmFacet.Cluster));
+                                _logger.LogInformation(string.Format("RFM info: email={0}, R={1}, F={2}, M={3}, Recency={4}, Frequency={5}, Monetary={6}",
+                                    identifier.Identifier, rfmFacet.R, rfmFacet.F, rfmFacet.M, rfmFacet.Recency, rfmFacet.Frequency, rfmFacet.Monetary));
 
                             }
                         }
