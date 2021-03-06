@@ -57,8 +57,6 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                                 Currency = "EUR"
                             });
                         }
-
-
                     }
 
                     if (customer.Invoices.Any())
