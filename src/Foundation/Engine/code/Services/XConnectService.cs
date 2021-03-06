@@ -8,7 +8,7 @@ using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Client.Configuration;
 using Sitecore.XConnect.Collection.Model;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
+namespace Hackathon.MLBox.Foundation.Engine.Services
 {
     public class XConnectService
     {
