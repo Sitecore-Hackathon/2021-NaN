@@ -1,6 +1,5 @@
 ﻿namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
 {
-
     using Hackathon.MLBox.Foundation.Common.Models;
     using OfficeOpenXml;
     using System;
@@ -64,47 +63,6 @@
             }
 
             return customers;
-        }
-
-        private List<Invoice> BuildProductModel(DataTable dataTable)
-        {
-            if (dataTable == null)
-                throw new ArgumentNullException(nameof(dataTable));
-
-            List<Invoice> products = new List<Invoice>();
-
-            var groupedData = dataTable.AsEnumerable().GroupBy(x => x.Field<string>("StockCode"));
-            foreach (IGrouping<string, DataRow> data in groupedData)
-            {
-                if (!string.IsNullOrEmpty(data.Key))
-                {
-                    var found = false;
-                    foreach (var record in data)
-                    {
-                        var description = record["Description"].ToString();
-                        int.TryParse(record["Quantity"].ToString(), out var quantity);
-                        decimal.TryParse(record["UnitPrice"].ToString(), out var unitPrice);
-                        int.TryParse(record["InvoiceNo"].ToString(), out var number);
-
-
-
-                        if (number > 0 && quantity > 0 && !string.IsNullOrEmpty(description))
-                        {
-                            found = true;
-                            products.Add(new Invoice
-                            {
-                                Quantity = quantity,
-                                Number = number,
-                                Price = unitPrice,
-                            });
-                        }
-
-                        if(found) break;
-                    }
-                }
-            }
-
-            return products;
         }
 
         private DataTable ReadExcel(Stream stream)

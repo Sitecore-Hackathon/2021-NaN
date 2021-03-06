@@ -1,0 +1,8 @@
+MLBox - extension for Marketing Automation
+
+The project is to enable the marketer to determine:
+- Users with low engagement
+- Users with high engagement
+- Predict the churn customer
+
+and add these user segments to the marketing plan for further interaction

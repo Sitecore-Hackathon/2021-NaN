@@ -116,20 +116,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\DemoAgent.cs" />
+    <Compile Include="Consts.cs" />
     <Compile Include="Extensions\TaskManagerExtensions.cs" />
-    <Compile Include="Interfaces\ISettingsStorage.cs" />
     <Compile Include="Mappers\CustomerModelMapper.cs" />
     <Compile Include="Agents\SitecoreTaskManager.cs" />
+    <Compile Include="Services\ForecastService.cs" />
+    <Compile Include="Services\SegmentationService.cs" />
     <Compile Include="Services\TimeseriesService.cs" />
-    <Compile Include="Settings\DataStorage.cs" />
-    <Compile Include="Settings\Model.cs" />
+    <Compile Include="Services\XConnectService.cs" />
     <Compile Include="Train\Models\ContactModel.cs" />
-    <Compile Include="Services\RfmCalculateService.cs" />
     <Compile Include="Train\Workers\ForecastTrainingWorker.cs" />
     <Compile Include="Train\Workers\ForecastTrainingWorkerOptionsDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ForecastService.cs" />
-    <Compile Include="Services\XConnectService.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Google.Protobuf">
@@ -165,7 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
-      <Project>{746b0fdb-63b9-48ed-a437-70d0067cb620}</Project>
+      <Project>{3ed07ec9-baf1-4129-8680-6e99287bda7f}</Project>
       <Name>Hackathon.MLBox.Foundation.Common</Name>
     </ProjectReference>
   </ItemGroup>
