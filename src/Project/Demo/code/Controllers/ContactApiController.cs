@@ -18,6 +18,12 @@ namespace Hackathon.NaN.MLBox.Project.Demo.Controllers
             return true;
         }
 
+        [HttpGet]
+        public async Task<bool> Test()
+        {
+           return true;
+        }
+
         // used for upload orders history from excel to xConnect by using Demo-Data-Explorer(can takes ~15 minutes)
         [HttpPost]
         public async Task<ParseDataResult> UploadClientsHistory()

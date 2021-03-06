@@ -99,9 +99,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Content Include="App_Config\Include\Foundation\Foundation.ProcessingEngine.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="App_Config\Processing\sc.Processing.Engine.DemoAgents.xml">
       <SubType>Designer</SubType>
     </Content>

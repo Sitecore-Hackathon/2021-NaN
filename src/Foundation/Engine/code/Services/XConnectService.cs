@@ -18,28 +18,6 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
         public static string IdentificationSource => "demo";
         public static string IdentificationSourceEmail => "demo_email";
 
-        static readonly ID CountryFolder = new ID("{DBE138C0-160F-4540-9868-0098E2CE8174}");
-        private static List<Item> _countries;
-
-        public string GetCountryCodeByName(string name)
-        {
-            if (_countries == null)
-            {
-                var folder = Sitecore.Context.Database.GetItem(CountryFolder);
-                if (folder != null)
-                {
-                    _countries = folder.Children.ToList();
-                }
-            }
-
-            var country = _countries?.FirstOrDefault(x => x.Name == name);
-            if (country != null)
-            {
-                return country["Country Code"];
-            }
-            return name;
-        }
-
         public async Task<bool> CreateContact(
             string source,
             string identifier,
@@ -121,13 +99,6 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
 
                         customer = new Contact(new ContactIdentifier(IdentificationSource, purchase.CustomerId.ToString(), ContactIdentifierType.Known));
 
-                        var test = customer.Interactions.SelectMany(x => x.Events.OfType<Outcome>())
-                            .Select(x => new 
-                            {
-                                A = customer.Id,
-                                B = x.MonetaryValue
-                            });
-
                         var preferredEmail = new EmailAddress(email, true);
                         var emails = new EmailAddressList(preferredEmail, "Work");
 
@@ -141,7 +112,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
                     }
 
                     var channel = Guid.Parse("DF9900DE-61DD-47BF-9628-058E78EF05C6");
-                    var interaction = new Interaction(customer, InteractionInitiator.Brand, channel, "demo app");
+                    var interaction = new Interaction(customer, InteractionInitiator.Contact, channel, "demo app");
 
                     if (addWebVisit)
                     {
@@ -152,9 +123,6 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
 
                         //Add fake Ip info
                         IpInfo fakeIpInfo = new IpInfo("127.0.0.1") { BusinessName = "Home"};
-                        var country = purchase.Invoices.FirstOrDefault(x => !string.IsNullOrEmpty(x.Country))?.Country;
-                        fakeIpInfo.Country = GetCountryCodeByName(country);
-
                         client.SetFacet(interaction, IpInfo.DefaultFacetKey, fakeIpInfo);
 
                         // Add fake webvisit

@@ -49,9 +49,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                             customer.Invoices.Add(new PurchaseInvoiceExcel
                             {
                                 Quantity = quantity,
-                                Country = record["Country"].ToString(),
                                 Number = number,
-                                StockCode = record["StockCode"].ToString(),
                                 Price = unitPrice,
                                 TimeStamp = dt.AddYears(7),
                                 Currency = "EUR"
@@ -96,9 +94,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                             {
                                 Quantity = quantity,
                                 Number = number,
-                                StockCode = data.Key,
                                 Price = unitPrice,
-                                Description = description
                             });
                         }
 
