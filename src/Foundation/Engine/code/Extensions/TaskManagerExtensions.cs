@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hackathon.MLBox.Foundation.Engine.Train.Models;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers;
+﻿using Hackathon.MLBox.Foundation.Engine.Train.Models;
 using Sitecore.Processing.Engine.Abstractions;
 using Sitecore.Processing.Tasks.Options;
 using Sitecore.Processing.Tasks.Options.DataSources.DataExtraction;
-using Sitecore.Processing.Tasks.Options.Workers.ML;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Hackathon.MLBox.Foundation.Engine.Extensions
 {
@@ -19,89 +16,31 @@ namespace Hackathon.MLBox.Foundation.Engine.Extensions
           this ITaskManager taskManager,
           TimeSpan expiresAfter)
         {
-            // Define workers parameters
-
-            // datasource for PurchaseOutcomeModel projection
-            var interactionDataSourceOptionsDictionary = new InteractionDataSourceOptionsDictionary(new InteractionExpandOptions(IpInfo.DefaultFacetKey), 5, 10);
             // datasource for ContactModel protection 
             var contactDataSourceOptionsDictionary = new ContactDataSourceOptionsDictionary(new ContactExpandOptions(PersonalInformation.DefaultFacetKey,
                     EmailAddressList.DefaultFacetKey,
-                    ContactBehaviorProfile.DefaultFacetKey)
+                    ContactBehaviorProfile.DefaultFacetKey
+                    )
+            {
+                Interactions = new RelatedInteractionsExpandOptions()
+            }
                 , 5, 10);
 
             var modelTrainingOptions = new ModelTrainingTaskOptions(
                 // assembly name of our processing engine model (ContactModel:IModel<Interaction>) 
                 typeof(ContactModel).AssemblyQualifiedName,
                 // assembly name of entity for our processing engine model  (ContactModel:IModel<Interaction>) 
-                typeof(Interaction).AssemblyQualifiedName,
+                typeof(Contact).AssemblyQualifiedName,
                 // custom options that we pass to ContactModel
                 new Dictionary<string, string> { ["TestCaseId"] = "Id" },
                 // projection tableName of PurchaseOutcomeModel, must be equal to first parameter of 'CreateTabular' method => PurchaseOutcomeModel.cs: CreateTabular("PurchaseOutcome", ...)
                 "PurchaseOutcome",
                 // name of resulted table (any name)
                 "DemoResultTable");
-
-            var projectionDictionary = new ProjectionWorkerOptionsDictionary(
-                modelTrainingOptions.ModelEntityTypeString,
-                modelTrainingOptions.ModelTypeString, expiresAfter, modelTrainingOptions.SchemaName,
-                modelTrainingOptions.ModelOptions);
-
-
-            //var evaluationDictionary = new EvaluationWorkerOptionsDictionary(
-            //     typeof(RfmEvaluationWorker).AssemblyQualifiedName,
-            //    typeof(ContactModel).AssemblyQualifiedName,
-            //    new Dictionary<string, string> { ["TestCaseId"] = "Id" },
-            //    "Evaluator.Schema",
-            //    expiresAfter);
-
-
+            
+            await taskManager.RegisterModelTrainingTaskChainAsync(modelTrainingOptions, contactDataSourceOptionsDictionary, expiresAfter);
             // Register chain of Tasks
 
-            // 1) Register Projection-worker
-            Guid projectionTaskId = await taskManager.RegisterDistributedTaskAsync(
-                interactionDataSourceOptionsDictionary,
-                projectionDictionary,
-                // no prerequisite tasks
-                Enumerable.Empty<Guid>(),
-                expiresAfter).ConfigureAwait(false);
-
-            // 2) Register Merge-worker
-            var mergeTaskIds = new List<Task<Guid>>();
-            foreach (var targetTableNames in modelTrainingOptions.SourceTargetTableNamesMap)
-            {
-                var mergeWorkerOptionsDictionary = new MergeWorkerOptionsDictionary(targetTableNames.Value, targetTableNames.Key, expiresAfter, modelTrainingOptions.SchemaName);
-                mergeTaskIds.Add(
-                    taskManager.RegisterDeferredTaskAsync(
-                        mergeWorkerOptionsDictionary,
-                        // execute after Projection task
-                        new[] { projectionTaskId },
-                        expiresAfter));
-            }
-            await Task.WhenAll(mergeTaskIds).ConfigureAwait(false);
-
-
-            // 3) Register Train-worker
-            var trainWorkerOptionsDictionary = new RfmTrainingWorkerOptionsDictionary(
-                modelTrainingOptions.ModelEntityTypeString,
-                modelTrainingOptions.ModelTypeString,
-                modelTrainingOptions.SchemaName,
-                modelTrainingOptions.SourceTargetTableNamesMap.Values.ToList(),
-                modelTrainingOptions.ModelOptions);
-
-            Guid trainTaskId = await taskManager.RegisterDeferredTaskAsync(
-                trainWorkerOptionsDictionary,
-                // execute after Merge task
-                mergeTaskIds.Select(t => t.Result),
-                expiresAfter).ConfigureAwait(false);
-
-            // 4) Register Evaluate worker
-            //Guid evaluateTaskId = await taskManager.RegisterDistributedTaskAsync(
-            //        contactDataSourceOptionsDictionary,
-            //        evaluationDictionary,
-            //        // execute after Train worker
-            //        new[] { trainTaskId },
-            //        expiresAfter)
-            //    .ConfigureAwait(false);
         }
     }
 }

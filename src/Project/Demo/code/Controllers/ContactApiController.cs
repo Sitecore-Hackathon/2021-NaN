@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Hackathon.MLBox.Foundation.Engine.Agents;
 using Hackathon.MLBox.Project.Demo.Models;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Agents;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services;
 
@@ -11,6 +11,7 @@ namespace Hackathon.MLBox.Project.Demo.Controllers
     public class ContactApiController : ApiController
     {
         // used for register processing engine tasks from sitecore website (for debugging purposes) by calling /api/contactapi/registertasks
+        [HttpGet]
         public async Task<bool> RegisterTasks()
         {
             var x = new SitecoreTaskManager();

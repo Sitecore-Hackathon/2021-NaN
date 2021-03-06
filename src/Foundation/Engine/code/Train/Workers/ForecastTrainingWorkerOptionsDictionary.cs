@@ -6,16 +6,16 @@ using Sitecore.Framework.Conditions;
 using Sitecore.Processing.Common.Extensions;
 using Sitecore.Processing.Engine.Abstractions;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
+namespace Hackathon.MLBox.Foundation.Engine.Train.Workers
 {
-    public class RfmTrainingWorkerOptionsDictionary : DeferredWorkerOptionsDictionary
+    public class ForecastTrainingWorkerOptionsDictionary : DeferredWorkerOptionsDictionary
     {
         public const string ModelTypeKey = "ModelType";
         public const string SchemaNameKey = "SchemaName";
         public const string TableNamesKey = "TableNames";
-        private const string TrainingWorkerOpenGenericTypeFormat = "Demo.Foundation.ProcessingEngine.Train.Workers.RfmTrainingWorker, Demo.Foundation.ProcessingEngine";
+        private const string TrainingWorkerOpenGenericTypeFormat = "Hackathon.MLBox.Foundation.Engine.Train.Workers.ForecastTrainingWorker, Hackathon.MLBox.Foundation.Engine";
 
-        public RfmTrainingWorkerOptionsDictionary(
+        public ForecastTrainingWorkerOptionsDictionary(
           string workerEntityTypeString,
           string modelTypeString,
           string schemaName,
@@ -26,7 +26,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
         }
 
         [JsonConstructor]
-        protected RfmTrainingWorkerOptionsDictionary(IDictionary<string, string> dictionary)
+        protected ForecastTrainingWorkerOptionsDictionary(IDictionary<string, string> dictionary)
           : base(dictionary)
         {
         }
@@ -39,7 +39,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
 
         public IReadOnlyList<string> TableNames => this.DeserializeJsonValue<IReadOnlyList<string>>(nameof(TableNames));
 
-        public static RfmTrainingWorkerOptionsDictionary Parse(
+        public static ForecastTrainingWorkerOptionsDictionary Parse(
           IReadOnlyDictionary<string, string> options)
         {
             Condition.Requires(options, nameof(options)).IsNotNull().IsNotEmpty();
@@ -50,7 +50,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
             string emptyOptionalString = options.GetNonEmptyOptionalString("SchemaName", (string)null);
             IDictionary<string, string> validatedDictionary = CreateValidatedDictionary(emptyRequiredString1, emptyOptionalString, tableNames, withoutReservedKeys);
             validatedDictionary.Add("WorkerType", emptyRequiredString2);
-            return new RfmTrainingWorkerOptionsDictionary(validatedDictionary);
+            return new ForecastTrainingWorkerOptionsDictionary(validatedDictionary);
         }
 
         private static IDictionary<string, string> CreateValidatedDictionaryWithWorkerType(

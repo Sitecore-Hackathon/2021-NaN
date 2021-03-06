@@ -1,0 +1,15 @@
+﻿<Settings>
+  <Sitecore>
+    <Processing>
+      <Services>
+        <TaskServicesFactory>
+          <Options>
+            <RfmInteractionTrainingWorker>
+              <Type>Hackathon.MLBox.Foundation.Engine.Train.Workers.ForecastTrainingWorker, Hackathon.MLBox.Foundation.Engine</Type>
+            </RfmInteractionTrainingWorker>
+          </Options>
+        </TaskServicesFactory>
+      </Services>
+    </Processing>
+  </Sitecore>
+</Settings>

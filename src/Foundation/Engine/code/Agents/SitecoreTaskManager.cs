@@ -6,7 +6,7 @@ using Sitecore.DependencyInjection;
 using Sitecore.Diagnostics;
 using Sitecore.Processing.Engine.Abstractions;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Agents
+namespace Hackathon.MLBox.Foundation.Engine.Agents
 {
     // used for register tasks from sitecore website (for debugging purposes) by calling /api/contactapi/registertasks
     public class SitecoreTaskManager
