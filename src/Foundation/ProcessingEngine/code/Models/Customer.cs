@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models
 {
@@ -8,7 +9,17 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models
         {
             Invoices = new List<PurchaseInvoice>();
         }
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         public IList<PurchaseInvoice> Invoices { get; set; }
+    }
+
+    public class CustomerExcel : CustomerBusinessValue
+    {
+        public CustomerExcel()
+        {
+            Invoices = new List<PurchaseInvoiceExcel>();
+        }
+        public int CustomerId { get; set; }
+        public IList<PurchaseInvoiceExcel> Invoices { get; set; }
     }
 }

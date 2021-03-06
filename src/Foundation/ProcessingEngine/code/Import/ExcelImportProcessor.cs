@@ -10,22 +10,17 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
 {
     public class ExcelImportProcessor
     {
-        public List<Customer> GetImportData(Stream fileStream)
+        public List<CustomerExcel> GetImportData(Stream fileStream)
         {
             return BuildObjectModel(ReadExcel(fileStream));
         }
 
-        public List<PurchaseInvoice> GetImportProducts(Stream fileStream)
-        {
-            return BuildProductModel(ReadExcel(fileStream));
-        }
-
-        private List<Customer> BuildObjectModel(DataTable dataTable)
+        private List<CustomerExcel> BuildObjectModel(DataTable dataTable)
         {
             if (dataTable == null)
                 throw new ArgumentNullException(nameof(dataTable));
 
-            List<Customer> customers = new List<Customer>();
+            List<CustomerExcel> customers = new List<CustomerExcel>();
 
             var groupedData = dataTable.AsEnumerable().GroupBy(x => x.Field<string>("CustomerID"));
             foreach (IGrouping<string, DataRow> data in groupedData)
@@ -36,10 +31,10 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                     if (customerId <= 0)
                         continue;
 
-                    Customer customer = new Customer
+                    var customer = new CustomerExcel
                     {
                         CustomerId = customerId,
-                        Invoices = new List<PurchaseInvoice>(),
+                        Invoices = new List<PurchaseInvoiceExcel>(),
                     };
 
                     foreach (DataRow record in data.ToList())
@@ -51,7 +46,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
 
                         if (number > 0 && quantity > 0)
                         {
-                            customer.Invoices.Add(new PurchaseInvoice()
+                            customer.Invoices.Add(new PurchaseInvoiceExcel
                             {
                                 Quantity = quantity,
                                 Country = record["Country"].ToString(),
@@ -74,12 +69,12 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
             return customers;
         }
 
-        private List<PurchaseInvoice> BuildProductModel(DataTable dataTable)
+        private List<PurchaseInvoiceExcel> BuildProductModel(DataTable dataTable)
         {
             if (dataTable == null)
                 throw new ArgumentNullException(nameof(dataTable));
 
-            List<PurchaseInvoice> products = new List<PurchaseInvoice>();
+            List<PurchaseInvoiceExcel> products = new List<PurchaseInvoiceExcel>();
 
             var groupedData = dataTable.AsEnumerable().GroupBy(x => x.Field<string>("StockCode"));
             foreach (IGrouping<string, DataRow> data in groupedData)
@@ -99,7 +94,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                         if (number > 0 && quantity > 0 && !string.IsNullOrEmpty(description))
                         {
                             found = true;
-                            products.Add(new PurchaseInvoice
+                            products.Add(new PurchaseInvoiceExcel
                             {
                                 Quantity = quantity,
                                 Number = number,
