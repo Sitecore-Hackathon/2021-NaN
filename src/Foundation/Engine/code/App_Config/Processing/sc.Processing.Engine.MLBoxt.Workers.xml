@@ -5,7 +5,7 @@
         <TaskServicesFactory>
           <Options>
             <RfmInteractionTrainingWorker>
-              <Type>Hackathon.MLBox.Foundation.Engine.Train.Workers.RfmTrainingWorker, Hackathon.MLBox.Foundation.Engine</Type>
+              <Type>Hackathon.MLBox.Foundation.Engine.Train.Workers.ForecastTrainingWorker, Hackathon.MLBox.Foundation.Engine</Type>
             </RfmInteractionTrainingWorker>
           </Options>
         </TaskServicesFactory>

@@ -15,13 +15,13 @@ namespace Hackathon.MLBox.Foundation.Engine.Train.Models
  
     public class ContactModel : BaseWorker, IModel<Contact>
     {
-        private readonly IMLNetService _mlNetService;
+        private readonly IForecastService _forecastService;
         private readonly ITableStoreFactory _tableStoreFactory;
-        public ContactModel(IReadOnlyDictionary<string, string> options, IMLNetService mlNetService,  ITableStoreFactory tableStoreFactory) : base (tableStoreFactory)
+        public ContactModel(IReadOnlyDictionary<string, string> options, IForecastService forecastService,  ITableStoreFactory tableStoreFactory) : base (tableStoreFactory)
         {
 
             _tableStoreFactory = tableStoreFactory;
-            _mlNetService = mlNetService;
+            _forecastService = forecastService;
 
         }
 
@@ -30,7 +30,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Train.Models
             var tableStore = _tableStoreFactory.Create(schemaName);
             var data = await GetDataRowsAsync(tableStore, tables.First().Name, cancellationToken);
             
-            return _mlNetService.Train(data);
+            return _forecastService.Train(data);
         }
 
         public Task<IReadOnlyList<object>> EvaluateAsync(string schemaName, CancellationToken cancellationToken, params TableDefinition[] tables)

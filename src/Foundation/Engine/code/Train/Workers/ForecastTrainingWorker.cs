@@ -13,20 +13,20 @@ using Sitecore.XConnect;
 namespace Hackathon.MLBox.Foundation.Engine.Train.Workers
 {
     
-    public class RfmTrainingWorker : IDeferredWorker
+    public class ForecastTrainingWorker : IDeferredWorker
     {
         private readonly IModel<Interaction> _model;
-        private readonly RfmTrainingWorkerOptionsDictionary _options;
+        private readonly ForecastTrainingWorkerOptionsDictionary _options;
         private readonly ITableStore _tableStore;
-        private readonly ILogger<RfmTrainingWorker> _logger;
+        private readonly ILogger<ForecastTrainingWorker> _logger;
         private readonly IServiceProvider _serviceProvider;
 
-        public RfmTrainingWorker(
+        public ForecastTrainingWorker(
             ITableStoreFactory tableStoreFactory,
             IServiceProvider provider,
-            ILogger<RfmTrainingWorker> logger,
+            ILogger<ForecastTrainingWorker> logger,
             AllowedModelsDictionary modelsDictionary,
-            RfmTrainingWorkerOptionsDictionary options,
+            ForecastTrainingWorkerOptionsDictionary options,
             IServiceProvider serviceProvider)
         {
 
@@ -37,14 +37,14 @@ namespace Hackathon.MLBox.Foundation.Engine.Train.Workers
             this._serviceProvider = serviceProvider;
         }
 
-        public RfmTrainingWorker(
+        public ForecastTrainingWorker(
             ITableStoreFactory tableStoreFactory,
             IServiceProvider provider,
-            ILogger<RfmTrainingWorker> logger,
+            ILogger<ForecastTrainingWorker> logger,
             AllowedModelsDictionary modelsDictionary,
             IReadOnlyDictionary<string, string> options,
             IServiceProvider serviceProvider)
-            : this(tableStoreFactory, provider, logger, modelsDictionary, RfmTrainingWorkerOptionsDictionary.Parse(options), serviceProvider)
+            : this(tableStoreFactory, provider, logger, modelsDictionary, ForecastTrainingWorkerOptionsDictionary.Parse(options), serviceProvider)
         {
         }
 
@@ -52,7 +52,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Train.Workers
 
         public async Task RunAsync(CancellationToken token)
         {
-            _logger.LogInformation("RfmTrainingWorker.RunAsync");
+            _logger.LogInformation("ForecastTrainingWorker.RunAsync");
             
             IReadOnlyList<string> tableNames = _options.TableNames;
             List<Task<TableStatistics>> tableStatisticsTasks = new List<Task<TableStatistics>>(tableNames.Count);

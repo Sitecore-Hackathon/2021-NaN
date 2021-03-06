@@ -1,0 +1,15 @@
+﻿<Settings>
+    <Sitecore>
+        <Processing>
+            <Services>
+                <IForecastService>
+                    <Type>Hackathon.MLBox.Foundation.Engine.Services.ForecastService, Hackathon.MLBox.Foundation.Engine</Type>
+                    <As>Hackathon.MLBox.Foundation.Engine.Services.IForecastService, Hackathon.MLBox.Foundation.Engine</As>
+                    <LifeTime>Transient</LifeTime>
+                    <Options>
+                    </Options>
+                </IForecastService>
+            </Services>
+        </Processing>
+    </Sitecore>
+</Settings>
