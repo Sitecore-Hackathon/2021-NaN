@@ -3,7 +3,7 @@
     <Processing>
       <Services>
         <DemoAgent>
-          <Type>Demo.Foundation.ProcessingEngine.Agents.DemoAgent, Demo.Foundation.ProcessingEngine</Type>
+          <Type>Hackathon.MLBox.Foundation.Engine.Agents.DemoAgent, Hackathon.MLBox.Foundation.Engine</Type>
           <As>Sitecore.Processing.Engine.Abstractions.IAgent, Sitecore.Processing.Engine.Abstractions</As>
           <LifeTime>Transient</LifeTime>
           <Options>

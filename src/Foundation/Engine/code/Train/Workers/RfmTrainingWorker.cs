@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers;
 using Microsoft.Extensions.Logging;
 using Sitecore.Processing.Engine.Abstractions;
 using Sitecore.Processing.Engine.ML;

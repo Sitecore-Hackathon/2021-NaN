@@ -108,14 +108,11 @@
     <Content Include="App_Config\Processing\sc.Processing.Services.MLNet.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Config\Processing\sc.PurchaseInteractionModel.Models.xml">
+    <Content Include="App_Config\Processing\sc.Contact.Models.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Config\AutomationEngime\sc.PurchaseOutcome.Model.xml" />
     <Content Include="App_Config\AutomationEngime\sc.XConnect.Segmentation.Cluster.Model.xml" />
-    <Content Include="App_Config\Processing\sc.XConnect.Client.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\DemoAgent.cs" />

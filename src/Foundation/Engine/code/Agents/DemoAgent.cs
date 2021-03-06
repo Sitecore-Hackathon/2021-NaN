@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Sitecore.Processing.Engine.Abstractions;
 using Sitecore.Processing.Engine.Agents;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Agents
+namespace Hackathon.MLBox.Foundation.Engine.Agents
 {
     // used for register tasks from xConnect Processing Engine
     public class DemoAgent : RecurringAgent

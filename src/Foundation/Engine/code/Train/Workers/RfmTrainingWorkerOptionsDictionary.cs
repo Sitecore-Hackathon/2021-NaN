@@ -6,7 +6,7 @@ using Sitecore.Framework.Conditions;
 using Sitecore.Processing.Common.Extensions;
 using Sitecore.Processing.Engine.Abstractions;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers
+namespace Hackathon.MLBox.Foundation.Engine.Train.Workers
 {
     public class RfmTrainingWorkerOptionsDictionary : DeferredWorkerOptionsDictionary
     {

@@ -5,11 +5,8 @@
         <TaskServicesFactory>
           <Options>
             <RfmInteractionTrainingWorker>
-              <Type>Demo.Foundation.ProcessingEngine.Train.Workers.RfmTrainingWorker, Demo.Foundation.ProcessingEngine</Type>
+              <Type>Hackathon.MLBox.Foundation.Engine.Train.Workers.RfmTrainingWorker, Hackathon.MLBox.Foundation.Engine</Type>
             </RfmInteractionTrainingWorker>
-            <RfmEvaluationWorker>
-              <Type>Demo.Foundation.ProcessingEngine.Predict.Workers.RfmEvaluationWorker, Demo.Foundation.ProcessingEngine</Type>
-            </RfmEvaluationWorker>
           </Options>
         </TaskServicesFactory>
       </Services>

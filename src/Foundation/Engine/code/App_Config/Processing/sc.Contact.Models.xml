@@ -1,0 +1,11 @@
+<Settings>
+  <Sitecore>
+    <Processing>
+      <Services>
+        <ContactModel>
+          <Type>Hackathon.MLBox.Foundation.Engine.Train.Models.ContactModel, Hackathon.MLBox.Foundation.Engine</Type>
+        </ContactModel>
+      </Services>
+    </Processing>
+  </Sitecore>
+</Settings>

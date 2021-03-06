@@ -3,13 +3,10 @@
         <Processing>
             <Services>
                 <IMLNetService>
-                    <Type>Demo.Foundation.ProcessingEngine.Services.MLNetService, Demo.Foundation.ProcessingEngine</Type>
-                    <As>Demo.Foundation.ProcessingEngine.Services.IMLNetService, Demo.Foundation.ProcessingEngine</As>
+                    <Type>Hackathon.MLBox.Foundation.Engine.Services.MLNetService, Hackathon.MLBox.Foundation.Engine</Type>
+                    <As>Hackathon.MLBox.Foundation.Engine.Services.IMLNetService, Hackathon.MLBox.Foundation.Engine</As>
                     <LifeTime>Transient</LifeTime>
                     <Options>
-                        <MLServerUrl>http://localhost:56399</MLServerUrl>
-                        <TrainUrl>/api/rfm/train</TrainUrl>
-                        <PredictUrl>/api/rfm/predict</PredictUrl>
                     </Options>
                 </IMLNetService>
             </Services>
