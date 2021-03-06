@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
-      <Project>{3ed07ec9-baf1-4129-8680-6e99287bda7f}</Project>
+      <Project>{746b0fdb-63b9-48ed-a437-70d0067cb620}</Project>
       <Name>Hackathon.MLBox.Foundation.Common</Name>
     </ProjectReference>
   </ItemGroup>
