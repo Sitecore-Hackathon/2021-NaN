@@ -128,7 +128,7 @@
     <Compile Include="Predict\Models\PredictionResult.cs" />
     <Compile Include="Settings\DataStorage.cs" />
     <Compile Include="Settings\Model.cs" />
-    <Compile Include="Train\Models\PurchaseInteractionModel.cs" />
+    <Compile Include="Train\Models\ContactModel.cs" />
     <Compile Include="Services\RfmCalculateService.cs" />
     <Compile Include="Train\Models\RfmStatistics.cs" />
     <Compile Include="Train\Workers\RfmTrainingWorker.cs" />

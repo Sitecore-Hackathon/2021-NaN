@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Models;
+using Hackathon.MLBox.Foundation.Engine.Train.Models;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers;
 using Sitecore.Processing.Engine.Abstractions;
 using Sitecore.Processing.Tasks.Options;
@@ -30,11 +30,11 @@ namespace Hackathon.MLBox.Foundation.Engine.Extensions
                 , 5, 10);
 
             var modelTrainingOptions = new ModelTrainingTaskOptions(
-                // assembly name of our processing engine model (PurchaseInteractionModel:IModel<Interaction>) 
-                typeof(PurchaseInteractionModel).AssemblyQualifiedName,
-                // assembly name of entity for our processing engine model  (PurchaseInteractionModel:IModel<Interaction>) 
+                // assembly name of our processing engine model (ContactModel:IModel<Interaction>) 
+                typeof(ContactModel).AssemblyQualifiedName,
+                // assembly name of entity for our processing engine model  (ContactModel:IModel<Interaction>) 
                 typeof(Interaction).AssemblyQualifiedName,
-                // custom options that we pass to PurchaseInteractionModel
+                // custom options that we pass to ContactModel
                 new Dictionary<string, string> { ["TestCaseId"] = "Id" },
                 // projection tableName of PurchaseOutcomeModel, must be equal to first parameter of 'CreateTabular' method => PurchaseOutcomeModel.cs: CreateTabular("PurchaseOutcome", ...)
                 "PurchaseOutcome",
