@@ -50,11 +50,17 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
             var predictions = new CustomersSegmentator().Predict(rfmList);
             return validContacts.Select((t, i) => new PredictionResult {Email = t.GetContactEmail(), Cluster = predictions[i]}).ToList();
         }
+
+        public int Predict(int value)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public interface IMLNetService
     {
         ModelStatistics Train(IReadOnlyList<IDataRow> data);
         IReadOnlyList<PredictionResult> Evaluate(IReadOnlyList<IDataRow> data);
+        int Predict(int value);
     }
 }
