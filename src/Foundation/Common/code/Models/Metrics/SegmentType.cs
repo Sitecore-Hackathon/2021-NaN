@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace code.Models.Metrics
+namespace Hackathon.MLBox.Foundation.Common.Models.Metrics
 {
     public enum SegmentType
     {
