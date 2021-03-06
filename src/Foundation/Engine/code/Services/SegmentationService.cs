@@ -74,7 +74,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
                         RecencyMax = recencyList.Max()
                     };
 
-                    SaveSegments(segments);
+                    Save(segments);
                 }
             }
 
@@ -82,7 +82,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
         }
 
 
-        public List<CustomerItem> RebuildRFMScores(List<InvoiceItem> list)
+        public List<CustomerItem> RebuildMetrics(List<InvoiceItem> list)
         {
             var customers = list.GroupBy(x => x.ContactId)
                 .Select(x => new CustomerItem
@@ -165,7 +165,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
             return customers;
         }
 
-        public Segments GetSegmentsWithoutRebuild()
+        public Segments GetSegments()
         {
             return Load();
         }
