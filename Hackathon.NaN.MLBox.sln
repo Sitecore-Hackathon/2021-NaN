@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{3EC36DE1-6591-4520-AD93-CA11025C2900}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DemoDataExplorer", "DemoDataExplorer", "{DE2E3C02-035D-4C2B-A1D1-694AAE79F14B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.NaN.MLBox.Project.Demo", "src\Project\Demo\code\Hackathon.NaN.MLBox.Project.Demo.csproj", "{7054E548-19A8-42D9-90FE-C64A07E4450E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MarketingAutomation", "MarketingAutomation", "{846506FB-D703-41FE-ABF3-6CB9F1417E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.NaN.MLBox.Foundation.MarketingAutomation", "src\Foundation\MarketingAutomation\code\Hackathon.NaN.MLBox.Foundation.MarketingAutomation.csproj", "{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{7054E548-19A8-42D9-90FE-C64A07E4450E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7054E548-19A8-42D9-90FE-C64A07E4450E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7054E548-19A8-42D9-90FE-C64A07E4450E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,9 +66,11 @@ Global
 		{E3186587-4EA8-493F-AB16-30C2BC5207A6} = {DE2E3C02-035D-4C2B-A1D1-694AAE79F14B}
 		{DE2E3C02-035D-4C2B-A1D1-694AAE79F14B} = {5C1562B3-A0B5-43E8-BAE0-395D4ACCB0E0}
 		{7054E548-19A8-42D9-90FE-C64A07E4450E} = {70385333-54AC-408F-9B81-312353E5BB5C}
+		{846506FB-D703-41FE-ABF3-6CB9F1417E2D} = {3EC36DE1-6591-4520-AD93-CA11025C2900}
+		{0A85F4E0-1383-4A7F-B6F8-D02F5FAFEFD9} = {846506FB-D703-41FE-ABF3-6CB9F1417E2D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9C7B85EA-F484-476C-8A0C-8E6632EEA943}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {9C7B85EA-F484-476C-8A0C-8E6632EEA943}
 	EndGlobalSection
 EndGlobal
