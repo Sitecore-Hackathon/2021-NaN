@@ -7,8 +7,8 @@
     <ProjectGuid>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hackathon.NaN.MLBox.Foundation.ProcessingEngine</RootNamespace>
-    <AssemblyName>Hackathon.NaN.Foundation.ProcessingEngine</AssemblyName>
+    <RootNamespace>Hackathon.MLBox.Foundation.Engine</RootNamespace>
+    <AssemblyName>Hackathon.MLBox.Foundation.Engine</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -128,7 +128,7 @@
     <Compile Include="Import\ExcelImportProcessor.cs" />
     <Compile Include="Interfaces\ISettingsStorage.cs" />
     <Compile Include="Mappers\ContactModelMapper.cs" />
-    <Compile Include="Mappers\CustomerMapper.cs" />
+    <Compile Include="Mappers\CustomerModelMapper.cs" />
     <Compile Include="Models\XConnect\XdbPurchaseContactModel.cs" />
     <Compile Include="Predict\Models\ClusteringPrediction.cs" />
     <Compile Include="Predict\Models\ContactModel.cs" />
@@ -137,7 +137,6 @@
     <Compile Include="Agents\SitecoreTaskManager.cs" />
     <Compile Include="Predict\Models\ClusteringData.cs" />
     <Compile Include="Predict\Models\PredictionResult.cs" />
-    <Compile Include="Services\CustomersSegmentator.cs" />
     <Compile Include="Settings\DataStorage.cs" />
     <Compile Include="Settings\Model.cs" />
     <Compile Include="Train\Models\PurchaseInteractionModel.cs" />

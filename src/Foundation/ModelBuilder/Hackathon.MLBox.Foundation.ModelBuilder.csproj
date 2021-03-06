@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{212B677A-6AE2-4FDE-AF52-F7D4C5E2CF14}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XdbModelBuilder</RootNamespace>
-    <AssemblyName>XdbModelBuilder</AssemblyName>
+    <RootNamespace>Hackathon.MLBox.Foundation.ModelBuilder</RootNamespace>
+    <AssemblyName>Hackathon.MLBox.Foundation.ModelBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,9 +53,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProcessingEngine\code\Hackathon.NaN.MLBox.Foundation.ProcessingEngine.csproj">
+    <ProjectReference Include="..\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
       <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
-      <Name>Hackathon.NaN.MLBox.Foundation.ProcessingEngine</Name>
+      <Name>Hackathon.MLBox.Foundation.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

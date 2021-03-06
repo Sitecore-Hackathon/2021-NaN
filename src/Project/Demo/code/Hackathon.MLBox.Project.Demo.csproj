@@ -322,9 +322,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\ProcessingEngine\code\Hackathon.NaN.MLBox.Foundation.ProcessingEngine.csproj">
+    <ProjectReference Include="..\..\..\Foundation\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
       <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
-      <Name>Hackathon.NaN.MLBox.Foundation.ProcessingEngine</Name>
+      <Name>Hackathon.MLBox.Foundation.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
