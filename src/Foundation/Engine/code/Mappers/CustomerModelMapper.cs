@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
+using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using Sitecore.Processing.Engine.Projection;
 
 namespace Hackathon.MLBox.Foundation.Engine.Mappers

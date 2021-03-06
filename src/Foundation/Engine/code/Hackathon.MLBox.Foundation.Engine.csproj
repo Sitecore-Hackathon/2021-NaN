@@ -165,9 +165,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
-      <Project>{3ed07ec9-baf1-4129-8680-6e99287bda7f}</Project>
-      <Name>Hackathon.MLBox.Foundation.Common</Name>
+    <ProjectReference Include="..\..\Shared\code\Hackathon.MLBox.Foundation.Shared.csproj">
+      <Project>{0bfa457a-1430-44ea-bfe2-4a044e4def1d}</Project>
+      <Name>Hackathon.MLBox.Foundation.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

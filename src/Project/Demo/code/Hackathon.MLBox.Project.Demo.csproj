@@ -232,20 +232,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
-      <Project>{3ed07ec9-baf1-4129-8680-6e99287bda7f}</Project>
-      <Name>Hackathon.MLBox.Foundation.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
-      <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
+      <Project>{0d1a5ff4-e76f-48d3-8211-92085d45e2ce}</Project>
       <Name>Hackathon.MLBox.Foundation.Engine</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\Import\code\Hackathon.MLBox.Foundation.Import.csproj">
       <Project>{f2de4559-40d9-4230-bb6f-95dfff275ec4}</Project>
       <Name>Hackathon.MLBox.Foundation.Import</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\Shared\code\Hackathon.MLBox.Foundation.Shared.csproj">
+      <Project>{0BFA457A-1430-44EA-BFE2-4A044E4DEF1D}</Project>
+      <Name>Hackathon.MLBox.Foundation.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

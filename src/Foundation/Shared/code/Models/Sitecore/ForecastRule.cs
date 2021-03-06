@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hackathon.MLBox.Foundation.Common.Models.Sitecore
+namespace Hackathon.MLBox.Foundation.Shared.Models.Sitecore
 {
     public enum ForecastRule
     {

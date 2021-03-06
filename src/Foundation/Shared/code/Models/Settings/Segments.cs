@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Storage
+namespace Hackathon.MLBox.Foundation.Shared.Models.Settings
 {
     [ProtoContract]
     public class Segments

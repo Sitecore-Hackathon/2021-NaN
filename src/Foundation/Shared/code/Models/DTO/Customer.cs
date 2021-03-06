@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Hackathon.MLBox.Foundation.Common.Models.DTO
+namespace Hackathon.MLBox.Foundation.Shared.Models.DTO
 {
     /// <summary>
     /// Customer

@@ -1,7 +1,7 @@
-﻿namespace Hackathon.MLBox.Foundation.Common.Models
-{
-    using System;
+﻿using System;
 
+namespace Hackathon.MLBox.Foundation.Shared.Models.DTO
+{
     /// <summary>
     /// Invoice
     /// </summary>

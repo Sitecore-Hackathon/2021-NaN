@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using Hackathon.MLBox.Foundation.Common.Models;
-using Hackathon.MLBox.Foundation.Common.Models.DTO;
+using Hackathon.MLBox.Foundation.Shared.Models.DTO;
 using OfficeOpenXml;
-
+ 
 namespace Hackathon.MLBox.Foundation.Import.Excel
 {
     public class ExcelImportProcessor

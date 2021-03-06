@@ -1,4 +1,4 @@
-﻿namespace Hackathon.MLBox.Foundation.Common.Models.Sitecore
+﻿namespace Hackathon.MLBox.Foundation.Shared.Models.Sitecore
 {
     using System;
 

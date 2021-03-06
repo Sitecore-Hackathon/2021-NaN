@@ -1,7 +1,7 @@
-﻿namespace Hackathon.MLBox.Foundation.Common.Helpers
+﻿using System;
+
+namespace Hackathon.MLBox.Foundation.Shared.Helpers
 {
-    using System;
-    
     /// <summary>
     /// Statistic helper
     /// </summary>

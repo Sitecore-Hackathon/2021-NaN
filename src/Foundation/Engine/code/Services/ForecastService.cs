@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Hackathon.MLBox.Foundation.Common.Models.Metrics;
-using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
 using Hackathon.MLBox.Foundation.Engine.Mappers;
+using Hackathon.MLBox.Foundation.Shared.Models.Metrics;
+using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using Sitecore.Processing.Engine.Projection;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services
 {
-    public partial class ForecastService : IForecastService
+    public class ForecastService : IForecastService
     {
         private SegmentationService _segmentationService;
 
