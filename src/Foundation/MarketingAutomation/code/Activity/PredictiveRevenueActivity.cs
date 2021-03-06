@@ -40,9 +40,11 @@ namespace Hackathon.NaN.MLBox.Foundation.MarketingAutomation.Activity
         {
             Condition.Requires(context, nameof(context)).IsNotNull();
             if (this.ShouldMove(context))
-                return this.TruePathKey == null ? new SuccessMove() : new SuccessMove(this.TruePathKey) as ActivityResult;
+            {
+                return this.TruePathKey == null ? new SuccessMove("false") : new SuccessMove(this.TruePathKey) as ActivityResult;
+            }
 
-            return (ActivityResult) new SuccessMove();
+            return (ActivityResult) new SuccessMove("true");
         }
 
 
