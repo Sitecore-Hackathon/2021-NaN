@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{70385333-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Foundation.Engine", "src\Foundation\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj", "{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessingEngine", "ProcessingEngine", "{6EE7A50F-D844-4DA0-AD8D-CD92037739AB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{6EE7A50F-D844-4DA0-AD8D-CD92037739AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModelBuilder", "ModelBuilder", "{E8186B9C-7BCC-4C6B-A2C3-FFC65860117B}"
 EndProject
@@ -26,6 +26,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B08EE892-D5F3-41B6-8B64-A3B5E4DDB993}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.MLBox.Foundation.Common", "src\Foundation\Common\code\Hackathon.MLBox.Foundation.Common.csproj", "{746B0FDB-63B9-48ED-A437-70D0067CB620}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Import", "Import", "{4DD2AA72-E990-432A-AD41-EFA7688563FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Foundation.Import", "src\Foundation\Import\code\Hackathon.MLBox.Foundation.Import.csproj", "{F2DE4559-40D9-4230-BB6F-95DFFF275EC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{746B0FDB-63B9-48ED-A437-70D0067CB620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{746B0FDB-63B9-48ED-A437-70D0067CB620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{746B0FDB-63B9-48ED-A437-70D0067CB620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2DE4559-40D9-4230-BB6F-95DFFF275EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2DE4559-40D9-4230-BB6F-95DFFF275EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2DE4559-40D9-4230-BB6F-95DFFF275EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2DE4559-40D9-4230-BB6F-95DFFF275EC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,9 +76,11 @@ Global
 		{7054E548-19A8-42D9-90FE-C64A07E4450E} = {70385333-54AC-408F-9B81-312353E5BB5C}
 		{B08EE892-D5F3-41B6-8B64-A3B5E4DDB993} = {3EC36DE1-6591-4520-AD93-CA11025C2900}
 		{746B0FDB-63B9-48ED-A437-70D0067CB620} = {B08EE892-D5F3-41B6-8B64-A3B5E4DDB993}
+		{4DD2AA72-E990-432A-AD41-EFA7688563FA} = {3EC36DE1-6591-4520-AD93-CA11025C2900}
+		{F2DE4559-40D9-4230-BB6F-95DFFF275EC4} = {4DD2AA72-E990-432A-AD41-EFA7688563FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9C7B85EA-F484-476C-8A0C-8E6632EEA943}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
+		SolutionGuid = {9C7B85EA-F484-476C-8A0C-8E6632EEA943}
 	EndGlobalSection
 EndGlobal

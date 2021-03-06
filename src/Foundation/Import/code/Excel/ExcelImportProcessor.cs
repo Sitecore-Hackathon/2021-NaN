@@ -1,26 +1,27 @@
-﻿using OfficeOpenXml;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Models;
-
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
+﻿namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
 {
+
+    using Hackathon.MLBox.Foundation.Common.Models;
+    using OfficeOpenXml;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+
     public class ExcelImportProcessor
     {
-        public List<CustomerExcel> GetImportData(Stream fileStream)
+        public List<Customer> GetImportData(Stream fileStream)
         {
             return BuildObjectModel(ReadExcel(fileStream));
         }
 
-        private List<CustomerExcel> BuildObjectModel(DataTable dataTable)
+        private List<Customer> BuildObjectModel(DataTable dataTable)
         {
             if (dataTable == null)
                 throw new ArgumentNullException(nameof(dataTable));
 
-            List<CustomerExcel> customers = new List<CustomerExcel>();
+            List<Customer> customers = new List<Customer>();
 
             var groupedData = dataTable.AsEnumerable().GroupBy(x => x.Field<string>("CustomerID"));
             foreach (IGrouping<string, DataRow> data in groupedData)
@@ -31,10 +32,10 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                     if (customerId <= 0)
                         continue;
 
-                    var customer = new CustomerExcel
+                    var customer = new Customer
                     {
                         CustomerId = customerId,
-                        Invoices = new List<PurchaseInvoiceExcel>(),
+                        Invoices = new List<Invoice>(),
                     };
 
                     foreach (DataRow record in data.ToList())
@@ -46,12 +47,12 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
 
                         if (number > 0 && quantity > 0)
                         {
-                            customer.Invoices.Add(new PurchaseInvoiceExcel
+                            customer.Invoices.Add(new Invoice
                             {
                                 Quantity = quantity,
                                 Number = number,
                                 Price = unitPrice,
-                                TimeStamp = dt.AddYears(7),
+                                TimeStamp = dt,
                                 Currency = "EUR"
                             });
                         }
@@ -65,12 +66,12 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
             return customers;
         }
 
-        private List<PurchaseInvoiceExcel> BuildProductModel(DataTable dataTable)
+        private List<Invoice> BuildProductModel(DataTable dataTable)
         {
             if (dataTable == null)
                 throw new ArgumentNullException(nameof(dataTable));
 
-            List<PurchaseInvoiceExcel> products = new List<PurchaseInvoiceExcel>();
+            List<Invoice> products = new List<Invoice>();
 
             var groupedData = dataTable.AsEnumerable().GroupBy(x => x.Field<string>("StockCode"));
             foreach (IGrouping<string, DataRow> data in groupedData)
@@ -90,7 +91,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
                         if (number > 0 && quantity > 0 && !string.IsNullOrEmpty(description))
                         {
                             found = true;
-                            products.Add(new PurchaseInvoiceExcel
+                            products.Add(new Invoice
                             {
                                 Quantity = quantity,
                                 Number = number,

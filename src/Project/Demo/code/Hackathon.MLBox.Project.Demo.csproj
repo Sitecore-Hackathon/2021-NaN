@@ -82,6 +82,16 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.Extensions.DependencyInjection.5.0.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Threading.Thread" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
@@ -139,7 +149,6 @@
     <Compile Include="Routes\InitRoutes.cs" />
   </ItemGroup>
   <ItemGroup>
-  
     <None Include="packages.config" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
@@ -150,9 +159,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
+      <Project>{746b0fdb-63b9-48ed-a437-70d0067cb620}</Project>
+      <Name>Hackathon.MLBox.Foundation.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
       <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
       <Name>Hackathon.MLBox.Foundation.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\Import\code\Hackathon.MLBox.Foundation.Import.csproj">
+      <Project>{f2de4559-40d9-4230-bb6f-95dfff275ec4}</Project>
+      <Name>Hackathon.MLBox.Foundation.Import</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
