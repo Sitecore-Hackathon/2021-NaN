@@ -29,8 +29,8 @@ namespace Hackathon.MLBox.Foundation.Engine.Train.Models
         {
             var tableStore = _tableStoreFactory.Create(schemaName);
             var data = await GetDataRowsAsync(tableStore, tables.First().Name, cancellationToken);
-            
-            return _forecastService.Train(data);
+            _forecastService.Train(data);
+            return new ModelStatistics();
         }
 
         public Task<IReadOnlyList<object>> EvaluateAsync(string schemaName, CancellationToken cancellationToken, params TableDefinition[] tables)
@@ -43,6 +43,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Train.Models
                 "PurchaseOutcome",
                 contact =>
                 contact.Interactions.SelectMany(x => x.Events.OfType<Outcome>())
+                        .Where(x => x.MonetaryValue > 0)
                         .Select(x => new
                         {
                             ContactId = contact.Id,
