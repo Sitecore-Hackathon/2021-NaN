@@ -149,10 +149,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
-      <Project>{746b0fdb-63b9-48ed-a437-70d0067cb620}</Project>
-      <Name>Hackathon.MLBox.Foundation.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
       <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
       <Name>Hackathon.MLBox.Foundation.Engine</Name>

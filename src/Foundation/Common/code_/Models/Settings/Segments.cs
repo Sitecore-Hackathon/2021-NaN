@@ -3,7 +3,7 @@
 namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Storage
 {
     [ProtoContract]
-    public class Model
+    public class Segments
     {
         [ProtoMember(1)]
         public double MonetaryMin { get; set; }

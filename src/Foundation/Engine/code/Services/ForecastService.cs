@@ -20,7 +20,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
             var customersData = CustomerModelMapper.MapToCustomers(data);
 
             var rfmCalculateService = new SegmentationService();
-            var calculatedScores = rfmCalculateService.CalculateRfmScores(customersData);
+            var calculatedScores = rfmCalculateService.RebuildRFMScores(customersData);
 
             var businessData = calculatedScores.Select(x => new RFMScore()
             {
