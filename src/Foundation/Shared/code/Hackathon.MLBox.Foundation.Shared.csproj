@@ -45,6 +45,7 @@
     <Compile Include="Helpers\StatHelper.cs" />
     <Compile Include="Models\DTO\Customer.cs" />
     <Compile Include="Models\DTO\Invoice.cs" />
+    <Compile Include="Models\DTO\TimeseriesValue.cs" />
     <Compile Include="Models\Metrics\RFMScore.cs" />
     <Compile Include="Models\Metrics\SegmentType.cs" />
     <Compile Include="Models\Settings\Segments.cs" />

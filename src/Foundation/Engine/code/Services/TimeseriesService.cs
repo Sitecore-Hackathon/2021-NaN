@@ -1,25 +1,16 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Transforms.TimeSeries;
-using Sitecore.XConnect;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hackathon.MLBox.Foundation.Shared.Models.DTO;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services
 {
     public class TimeseriesService : ITimeseriesService
     {
-        public float PredictMonetary(Contact contact, int window)
+        public float PredictNext(IList<TimeSeriesValue> data, int window)
         {
-            var data = contact.Interactions.SelectMany(x => x.Events.OfType<Outcome>())
-                .Where(x => x.MonetaryValue > 0)
-                .Select(x => new TimeSlice
-                {
-                    Value = (float)x.MonetaryValue,
-                    Timestamp = x.Timestamp.Date
-                }).OrderBy(x => x.Timestamp).ToList();
-
-
+           
             var trainingData = new List<ModelInput>();
             while (true)
             {
@@ -72,14 +63,9 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
 
     public interface ITimeseriesService
     {
-        float PredictMonetary(Contact contact, int window);
+        float PredictNext(IList<TimeSeriesValue> data, int window);
     }
 
-    public class TimeSlice
-    {
-        public DateTime Timestamp { get; set; }
-        public float Value { get; set; }
-    }
     public class ModelInput
     {
         public float Value { get; set; }

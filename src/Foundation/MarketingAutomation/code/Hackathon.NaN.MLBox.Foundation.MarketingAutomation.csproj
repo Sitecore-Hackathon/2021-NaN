@@ -131,7 +131,16 @@
       <Version>10.1.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Engine\code\Hackathon.MLBox.Foundation.Engine.csproj">
+      <Project>{0D1A5FF4-E76F-48D3-8211-92085D45E2CE}</Project>
+      <Name>Hackathon.MLBox.Foundation.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\code\Hackathon.MLBox.Foundation.Shared.csproj">
+      <Project>{0BFA457A-1430-44EA-BFE2-4A044E4DEF1D}</Project>
+      <Name>Hackathon.MLBox.Foundation.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

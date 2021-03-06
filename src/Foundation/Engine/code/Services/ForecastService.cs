@@ -7,7 +7,7 @@ using Sitecore.Processing.Engine.Projection;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services
 {
-    public partial class ForecastService : IForecastService
+    public class ForecastService : IForecastService
     {
         private SegmentationService _segmentationService;
 
