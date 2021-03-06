@@ -130,7 +130,6 @@
     <Compile Include="Settings\Model.cs" />
     <Compile Include="Train\Models\PurchaseInteractionModel.cs" />
     <Compile Include="Services\RfmCalculateService.cs" />
-    <Compile Include="Predict\Workers\RfmEvaluationWorker.cs" />
     <Compile Include="Train\Models\RfmStatistics.cs" />
     <Compile Include="Train\Workers\RfmTrainingWorker.cs" />
     <Compile Include="Train\Workers\RfmTrainingWorkerOptionsDictionary.cs" />

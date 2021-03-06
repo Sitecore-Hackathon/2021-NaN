@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hackathon.MLBox.Foundation.Engine.Predict.Workers;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Models;
 using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Train.Workers;
 using Sitecore.Processing.Engine.Abstractions;
