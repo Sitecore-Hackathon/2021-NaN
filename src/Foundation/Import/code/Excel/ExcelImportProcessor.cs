@@ -1,6 +1,5 @@
 ﻿namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Import
 {
-
     using Hackathon.MLBox.Foundation.Common.Models;
     using OfficeOpenXml;
     using System;
