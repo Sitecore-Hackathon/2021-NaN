@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using Hackathon.MLBox.Foundation.Shared.Extensions;
 using Hackathon.MLBox.Foundation.Shared.Helpers;
 using Hackathon.MLBox.Foundation.Shared.Models.Settings;
 using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using ProtoBuf;
+using Sitecore.ApplicationCenter.Applications;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services
 {
@@ -23,7 +25,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
                 .Select(x => new CustomerItem
                 {
                     ContactId = x.Key,
-                    Invoices = list
+                    Invoices = x.ToList()
                 }).ToList();
 
 
@@ -73,8 +75,14 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
                         RecencyMin = recencyList.Min(),
                         RecencyMax = recencyList.Max()
                     };
-
-                    Save(segments);
+                    try
+                    {
+                        Save(segments);
+                    }
+                    catch (Exception ex)
+                    {
+                        var asdasd = ex.Message;
+                    }
                 }
             }
 
@@ -174,7 +182,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
 
         private void Save(Segments segments)
         {
-            using (var file = File.Create(string.Format($"{Consts.WorkFolder}/{Consts.SegmentsModel}")))
+            using (var file = File.Create(HttpContext.Current.Server.MapPath(string.Format($"{ Consts.WorkFolder}/{ Consts.SegmentsModel}"))))
             {
                 Serializer.Serialize(file, segments);
             }
@@ -183,7 +191,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
         private Segments Load()
         {
             Segments model = null;
-            using (var file = File.OpenRead(string.Format($"{Consts.WorkFolder}/{Consts.SegmentsModel}")))
+            using (var file = File.OpenRead(HttpContext.Current.Server.MapPath(string.Format($"{ Consts.WorkFolder}/{ Consts.SegmentsModel}"))))
             {
                 model = Serializer.Deserialize<Segments>(file);
             }
