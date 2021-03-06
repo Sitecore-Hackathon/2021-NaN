@@ -11,7 +11,7 @@
                     <LifeTime>Singleton</LifeTime>
                     <Options>
                         <Id>{BD1D0B32-6E3F-4963-8212-D3016C9BDABC}</Id>
-                        <ImplementationType>Hackathon.NaN.MLBox.Foundation.MarketingAutomation.Activity.PredictiveRevenueListener, Hackathon.NaN.MLBox.Foundation.MarketingAutomation</ImplementationType>
+                        <ImplementationType>Hackathon.MLBox.Foundation.MarketingAutomation.Activity.PredictiveRevenueListener, Hackathon.MLBox.Foundation.MarketingAutomation</ImplementationType>
                     </Options>
                 </MarketingAutomation.Activity.PredictiveRevenue>
             </Services>

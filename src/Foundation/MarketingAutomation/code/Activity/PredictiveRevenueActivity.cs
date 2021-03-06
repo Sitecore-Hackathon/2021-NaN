@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Hackathon.MLBox.Foundation.Engine.Services;
 using Hackathon.MLBox.Foundation.Shared.Models.DTO;
@@ -7,11 +8,7 @@ using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using Microsoft.Extensions.Logging;
 using Sitecore.Framework.Conditions;
 using Sitecore.Marketing.Automation.Activity;
-using Sitecore.Marketing.Automation.Activity.Extensions;
-using Sitecore.Marketing.Rules;
 using Sitecore.XConnect;
-using Sitecore.XConnect.Collection.Model;
-using Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder;
 using Sitecore.Xdb.MarketingAutomation.Core.Activity;
 using Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan;
 
@@ -21,7 +18,7 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
     {
         public int Days { get; set; }
 
-        public CollectionLifecycleOperation Lifecycle { get; set; }
+        public string Lifecycle { get; set; }
 
         protected PredictiveRevenueListener(ILogger<IActivity> logger)
             : this(logger, "true", "false") { }
@@ -62,13 +59,14 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
             //var latest = timeSeries.Last()?.Value;
             //var predicted = timeSeriesService.PredictNext(timeSeries, Days);
 
-
             var forecastService = new ForecastService();
             var contactValue = (int)ExtractTotalMonetary(context.Contact);
 
             var predictionSegment = forecastService.GetSegmentType(contactValue, ForecastRule.M);
 
-            switch (Lifecycle)
+            var lifecycleValue = (CollectionLifecycleOperation) Enum.Parse(typeof(CollectionLifecycleOperation), Lifecycle, true);
+
+            switch (lifecycleValue)
             {
                 case CollectionLifecycleOperation.High:
                     return predictionSegment == SegmentType.Hight;
