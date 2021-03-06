@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using code.Models.Metrics;
-using code.Models.Sitecore;
+using Hackathon.MLBox.Foundation.Common.Models.Metrics;
+using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
 using Hackathon.MLBox.Foundation.Engine.Mappers;
 using Sitecore.Processing.Engine.Projection;
 
