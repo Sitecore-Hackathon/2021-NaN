@@ -8,71 +8,30 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
     public static class CustomerMapper
     {
 
-        public static List<PurchaseInvoice> MapToProductsList(IReadOnlyList<IDataRow> dataRows)
+        public static List<PurchaseInvoice> MapToCustomers(IReadOnlyList<IDataRow> dataRows)
         {
-            var invoices = new List<PurchaseInvoice>();
-            foreach (var data in dataRows)
-            {
-                invoices.Add(data.ToPurchaseOutcome());
-            }
-            return invoices;
-        }
-
-        public static List<Customer> MapToCustomers(IReadOnlyList<IDataRow> dataRows)
-        {
-            var invoices = new List<PurchaseInvoice>();
-            foreach (var data in dataRows)
-            {
-                invoices.Add(data.ToPurchaseOutcome());
-            }
-
-            var groupedData = invoices.AsEnumerable().GroupBy(x => x.ContactId);
-
-            return groupedData.Select(data => new Customer {CustomerId = data.Key, Invoices = data.ToList()}).ToList();
+            return dataRows.Select(data => data.ToPurchaseOutcome()).ToList();
         }
 
         public static PurchaseInvoice ToPurchaseOutcome(this IDataRow dataRow)
         {
             var result = new PurchaseInvoice();
-            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseOutcome.CustomerId));
+            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseInvoice.ContactId));
             if (customerId != null)
             {
-                result.ContactId = (int) dataRow.GetInt64(dataRow.Schema.GetFieldIndex(nameof(PurchaseOutcome.CustomerId)));
-            }
-            var invoiceId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseOutcome.InvoiceId));
-            if (invoiceId != null)
-            {
-                result.Number = (int)dataRow.GetInt64(dataRow.Schema.GetFieldIndex(nameof(PurchaseOutcome.InvoiceId)));
+                result.ContactId = dataRow.GetGuid(dataRow.Schema.GetFieldIndex(nameof(PurchaseInvoice.ContactId)));
             }
 
-            var quantity = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseOutcome.Quantity));
-            if (quantity != null)
-            {
-                result.Quantity = (int)dataRow.GetInt64(dataRow.Schema.GetFieldIndex(nameof(PurchaseOutcome.Quantity)));
-            }
-
-            var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseOutcome.Timestamp));
+            var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseInvoice.Timestamp));
             if (date != null)
             {
-                result.TimeStamp = dataRow.GetDateTime(dataRow.Schema.GetFieldIndex(nameof(PurchaseOutcome.Timestamp)));
+                result.Timestamp = dataRow.GetDateTime(dataRow.Schema.GetFieldIndex(nameof(PurchaseInvoice.Timestamp)));
             }
 
-            var price = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseOutcome.UnitPrice));
+            var price = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseInvoice.Value));
             if (price != null)
             {
-                result.Price = (decimal) dataRow.GetDouble(dataRow.Schema.GetFieldIndex(nameof(PurchaseOutcome.UnitPrice)));
-            }
-
-            var productId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(PurchaseOutcome.ProductId));
-            if (productId != null)
-            {
-                result.StockCode = dataRow.GetString(dataRow.Schema.GetFieldIndex(nameof(PurchaseOutcome.ProductId)));
-            }
-
-            var country = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == "Country");
-            if (country != null)
-            {
-                result.Country = dataRow.GetString(dataRow.Schema.GetFieldIndex("Country"));
+                result.Value = (float) dataRow.GetDouble(dataRow.Schema.GetFieldIndex(nameof(PurchaseInvoice.Value)));
             }
 
             return result;

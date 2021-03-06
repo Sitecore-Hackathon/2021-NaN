@@ -121,6 +121,13 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
 
                         customer = new Contact(new ContactIdentifier(IdentificationSource, purchase.CustomerId.ToString(), ContactIdentifierType.Known));
 
+                        var test = customer.Interactions.SelectMany(x => x.Events.OfType<Outcome>())
+                            .Select(x => new 
+                            {
+                                A = customer.Id,
+                                B = x.MonetaryValue
+                            });
+
                         var preferredEmail = new EmailAddress(email, true);
                         var emails = new EmailAddressList(preferredEmail, "Work");
 
@@ -196,7 +203,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Services
 
                     foreach (var invoice in purchase.Invoices)
                     {
-                        var outcome = new PurchaseOutcome(PurchaseOutcome.PurchaseEventDefinitionId, invoice.TimeStamp, invoice.Currency, invoice.Price, invoice.Number, invoice.Quantity, purchase.CustomerId, invoice.StockCode);
+                        var outcome = new Outcome(new Guid("{9016E456-95CB-42E9-AD58-997D6D77AE83}"), invoice.TimeStamp, invoice.Currency, invoice.Price * invoice.Quantity);
                         interaction.Events.Add(outcome);
                     }
 

@@ -21,30 +21,11 @@ namespace XdbModelBuilder
 
         static void Main(string[] args)
         {
-            CreateJsonModelForFacetModel(XdbPurchaseModel.Model);
             CreateJsonModelForContactFacetModel(XdbPurchaseContactModel.Model);
 
             Console.ReadLine();
         }
 
-        private static void CreateJsonModelForFacetModel(XdbModel model)
-        {
-            try
-            {
-                var fileName = XdbPurchaseModel.Model.FullName + ".json";
-                var json = XdbModelWriter.Serialize(model);
-                System.IO.File.WriteAllText(fileName, json);
-
-                Console.WriteLine($"Json-model file successfully created for {model.GetType()}.{Environment.NewLine}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception while creating json-model for {model.GetType()}: {ex.Message}{Environment.NewLine}");
-                Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}Make sure that the console app is launched WITHIN the bin-folder of the RAI-wwwRoot folder!{Environment.NewLine}");
-            }
-
-            Console.WriteLine($"--------------------------------------------------{Environment.NewLine}");
-        }
 
         private static void CreateJsonModelForContactFacetModel(XdbModel model)
         {
