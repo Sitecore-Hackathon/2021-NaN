@@ -123,10 +123,10 @@
   <ItemGroup>
     <Compile Include="Agents\DemoAgent.cs" />
     <Compile Include="Conditionals\RfmMatch.cs" />
-    <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\TaskManagerExtensions.cs" />
     <Compile Include="Facets\RfmContactFacet.cs" />
     <Compile Include="Import\ExcelImportProcessor.cs" />
+    <Compile Include="Interfaces\ISettingsStorage.cs" />
     <Compile Include="Mappers\ContactModelMapper.cs" />
     <Compile Include="Mappers\CustomerMapper.cs" />
     <Compile Include="Models\XConnect\XdbPurchaseContactModel.cs" />
@@ -138,6 +138,8 @@
     <Compile Include="Predict\Models\ClusteringData.cs" />
     <Compile Include="Predict\Models\PredictionResult.cs" />
     <Compile Include="Services\CustomersSegmentator.cs" />
+    <Compile Include="Settings\DataStorage.cs" />
+    <Compile Include="Settings\Model.cs" />
     <Compile Include="Train\Models\PurchaseInteractionModel.cs" />
     <Compile Include="Models\PurchaseInvoice.cs" />
     <Compile Include="Services\RfmCalculateService.cs" />
@@ -152,6 +154,9 @@
   <ItemGroup>
     <PackageReference Include="EPPlus">
       <Version>4.5.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Google.Protobuf">
+      <Version>3.15.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.ML">
       <Version>1.5.5</Version>
@@ -175,7 +180,15 @@
       <Version>10.1.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Hackathon.NaN.MLBox\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\code\Hackathon.MLBox.Foundation.Common.csproj">
+      <Project>{746b0fdb-63b9-48ed-a437-70d0067cb620}</Project>
+      <Name>Hackathon.MLBox.Foundation.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

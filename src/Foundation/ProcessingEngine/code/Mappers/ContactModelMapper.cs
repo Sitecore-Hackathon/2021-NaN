@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Facets;
-using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Models;
-using Sitecore.Processing.Engine.Projection;
-
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
+﻿namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Facets;
+    using Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Predict.Models;
+    using Sitecore.Processing.Engine.Projection;
+
+    /// <summary>
+    /// Contact model mapper
+    /// </summary>
     public static class ContactModelMapper
     {
         public static bool Enabled(this IDataRow dataRow)
@@ -17,6 +20,8 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
             }
             return false;
         }
+
+
         public static string GetContactEmail(this IDataRow dataRow)
         {
             var email = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == "Email");
@@ -27,6 +32,8 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
 
             return null;
         }
+
+
         public static RfmContactFacet MapToRfmFacet(this IDataRow dataRow)
         {
             var result = new RfmContactFacet();
@@ -65,6 +72,7 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
             return result;
         }
 
+
         public static List<PredictionResult> ToPredictionResults(this IReadOnlyList<object> evaluationResults)
         {
             var results = new List<PredictionResult>();
@@ -75,7 +83,6 @@ namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Mappers
                     results.Add(result as PredictionResult);
                 }
             }
-
             return results;
         }
     }

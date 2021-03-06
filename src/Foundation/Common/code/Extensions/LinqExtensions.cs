@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Hackathon.NaN.MLBox.Foundation.ProcessingEngine.Extensions
+﻿/// <summary>
+/// Linq extensions
+/// </summary>
+namespace Hackathon.MLBox.Foundation.Common.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class LinqExtensions
     {
+
+        /// <summary>
+        /// Split the list into parts
+        /// </summary>
         public static List<T>[] Partition<T>(this List<T> list, int totalPartitions)
         {
             if (list == null)
