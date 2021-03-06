@@ -16,10 +16,13 @@ The project is to enable the marketer to determine:
 
 and add these user segments to the marketing plan for further interaction
 
-## Video link
-⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
+For the demonstration, we use the historical data that we took from this link:
+[https://archive.ics.uci.edu/ml/datasets/online+retail]
 
-⟹ [Replace this Video link](#video-link)
+In order for the data to be up-to-date, we shifted the dates so that they were for 2020-2021 (a total of 541,909 records)
+
+## Video link
+⟹ [Replace this Video link](#demo video)
 
 
 
