@@ -17,7 +17,8 @@ The project is to enable the marketer to determine:
 and add these user segments to the marketing plan for further interaction
 
 For the demonstration, we use the historical data that we took from this link:
-[https://archive.ics.uci.edu/ml/datasets/online+retail]
+
+[Dataset]([https://archive.ics.uci.edu/ml/datasets/online+retail)
 
 In order for the data to be up-to-date, we shifted the dates so that they were for 2020-2021 (a total of 541,909 records)
 
@@ -25,18 +26,14 @@ In order for the data to be up-to-date, we shifted the dates so that they were f
 ⟹ [Replace this Video link](#demo video)
 
 
-
 ## Pre-requisites and Dependencies
 
-⟹ Does your module rely on other Sitecore modules or frameworks?
+Sitecore 10.1.0 rev. 005207 (WDP XP0 packages).zip
 
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
-
-_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
 
 ## Installation instructions
+
+
 ⟹ Write a short clear step-wise instruction on how to install your module.  
 
 > _A simple well-described installation process is required to win the Hackathon._  
