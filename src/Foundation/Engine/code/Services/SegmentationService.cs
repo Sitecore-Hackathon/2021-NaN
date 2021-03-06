@@ -6,8 +6,11 @@ using Hackathon.MLBox.Foundation.Common.Models.Sitecore;
 
 namespace Hackathon.MLBox.Foundation.Engine.Services
 {
-    public class RfmCalculateService
+    public class SegmentationService
     {
+
+        public void GetSegments
+
         // RFM from 111 to 333
         private int MaxValue = 3;
       
