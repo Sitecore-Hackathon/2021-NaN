@@ -82,6 +82,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Reference Include="Sitecore.XConnect.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System.Threading.Thread" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />

@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Project.Dem
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B08EE892-D5F3-41B6-8B64-A3B5E4DDB993}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.MLBox.Foundation.Common", "src\Foundation\Common\code\Hackathon.MLBox.Foundation.Common.csproj", "{746B0FDB-63B9-48ED-A437-70D0067CB620}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.MLBox.Foundation.Common", "src\Foundation\Common\code\Hackathon.MLBox.Foundation.Common.csproj", "{746B0FDB-63B9-48ED-A437-70D0067CB620}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Import", "Import", "{4DD2AA72-E990-432A-AD41-EFA7688563FA}"
 EndProject
