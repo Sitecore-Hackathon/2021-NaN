@@ -3,7 +3,7 @@
 export class PredictiveRevenueActivity extends ConditionItem {
 	
     get isDefined(): boolean {
-        return Boolean(this.editorParams.Days || this.editorParams.Lifecycle);
+        return Boolean(this.editorParams.days || this.editorParams.lifecycle);
     }
 
     getVisual(): string {
@@ -17,7 +17,7 @@ export class PredictiveRevenueActivity extends ConditionItem {
                 </span>
                 <p class="text with-subtitle" title="Predictive revenue">
                     ${title}
-                    <small class="subtitle" title="Days: ${this.editorParams.Days} and Lifecycle: ${this.editorParams.Lifecycle}">Days: ${this.editorParams.Days} and Lifecycle: ${this.editorParams.Lifecycle}</small>
+                    <small class="subtitle" title="Days: ${this.editorParams.days} and Lifecycle: ${this.editorParams.lifecycle}">Days: ${this.editorParams.days} and Lifecycle: ${this.editorParams.lifecycle}</small>
                 </p>
             </div>
         `;

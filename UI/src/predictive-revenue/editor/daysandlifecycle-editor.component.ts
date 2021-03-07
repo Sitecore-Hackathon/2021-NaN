@@ -39,16 +39,16 @@ export class DaysAndLifecycleEditorComponent extends EditorBase implements OnIni
 
   ngOnInit(): void {
     console.log(this.model);
-    this.days = this.model ? this.model.Days || 0 : 1;
+    this.days = this.model ? this.model.days || 0 : 1;
 
     this.lifecycle = 0;
-    if (!this.model && this.model.Lifecycle == 'Low' || this.model.Lifecycle == 'low') {
+    if (!this.model && this.model.lifecycle == 'Low' || this.model.lifecycle == 'low') {
       this.lifecycle = 0;
     }
-    else if (!this.model && this.model.Lifecycle == 'Medium' || this.model.Lifecycle == 'medium') {
+    else if (!this.model && this.model.lifecycle == 'Medium' || this.model.lifecycle == 'medium') {
       this.lifecycle = 1;
     }
-    else if (!this.model && this.model.Lifecycle == 'High' || this.model.Lifecycle == 'high') {
+    else if (!this.model && this.model.lifecycle == 'High' || this.model.lifecycle == 'high') {
       this.lifecycle = 2;
     }
   }
@@ -78,8 +78,8 @@ export class DaysAndLifecycleEditorComponent extends EditorBase implements OnIni
       this.valueLifecycle = 'High';
     }
     return {
-      Days: this.days,
-      Lifecycle: this.valueLifecycle
+      days: this.days,
+      lifecycle: this.valueLifecycle
     };
   }
 }
