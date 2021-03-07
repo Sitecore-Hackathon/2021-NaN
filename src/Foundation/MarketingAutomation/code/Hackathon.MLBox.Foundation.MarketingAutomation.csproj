@@ -104,8 +104,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity\PredictiveRevenueActivity.cs" />
     <Compile Include="Activity\CollectionLifecycleOperation.cs" />
+    <Compile Include="Activity\PredictiveRevenueActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Hackathon.MLBox.Foundation.Engine.Services;
 using Hackathon.MLBox.Foundation.Shared.Models.DTO;
@@ -17,7 +18,7 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
     {
         public int Days { get; set; }
 
-        public CollectionLifecycleOperation Lifecycle { get; set; }
+        public string Lifecycle { get; set; }
 
         public PredictiveRevenueListener(ILogger<PredictiveRevenueListener> logger)
             : this(logger, "true", "false") { }
@@ -59,13 +60,14 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
             //var latest = timeSeries.Last()?.Value;
             //var predicted = timeSeriesService.PredictNext(timeSeries, Days);
 
-
             var forecastService = new ForecastService();
             var contactValue = (int)ExtractTotalMonetary(context.Contact);
 
             var predictionSegment = forecastService.GetSegmentType(contactValue, ForecastRule.M);
 
-            switch (Lifecycle)
+            var lifecycleValue = (CollectionLifecycleOperation) Enum.Parse(typeof(CollectionLifecycleOperation), Lifecycle, true);
+
+            switch (lifecycleValue)
             {
                 case CollectionLifecycleOperation.High:
                     return predictionSegment == SegmentType.Hight;
