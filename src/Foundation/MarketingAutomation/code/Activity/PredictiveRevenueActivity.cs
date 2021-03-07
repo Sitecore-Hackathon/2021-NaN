@@ -7,11 +7,7 @@ using Hackathon.MLBox.Foundation.Shared.Models.Sitecore;
 using Microsoft.Extensions.Logging;
 using Sitecore.Framework.Conditions;
 using Sitecore.Marketing.Automation.Activity;
-using Sitecore.Marketing.Automation.Activity.Extensions;
-using Sitecore.Marketing.Rules;
 using Sitecore.XConnect;
-using Sitecore.XConnect.Collection.Model;
-using Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder;
 using Sitecore.Xdb.MarketingAutomation.Core.Activity;
 using Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan;
 
@@ -23,7 +19,7 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
 
         public CollectionLifecycleOperation Lifecycle { get; set; }
 
-        protected PredictiveRevenueListener(ILogger<IActivity> logger)
+        public PredictiveRevenueListener(ILogger<PredictiveRevenueListener> logger)
             : this(logger, "true", "false") { }
 
         /// <summary>
@@ -32,9 +28,10 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
         /// <param name="logger">The logger.</param>
         /// <param name="truePathKey">The key of the path to take when the condition evaluates to true.</param>
         /// <param name="falsePathKey">The key of the path to take when the condition evaluates to false.</param>
-        protected PredictiveRevenueListener(ILogger<IActivity> logger, string truePathKey, string falsePathKey)
+        public PredictiveRevenueListener(ILogger<PredictiveRevenueListener> logger, string truePathKey, string falsePathKey)
             : base(logger)
         {
+            logger.LogWarning("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             this.TruePathKey = truePathKey;
             this.FalsePathKey = falsePathKey;
         }
