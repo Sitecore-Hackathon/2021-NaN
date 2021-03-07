@@ -181,8 +181,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
 
         private void Save(Segments segments)
         {
-            var fn = Path.Combine(AppContext.BaseDirectory, Consts.SegmentsModel);
-            using (var file = File.Create(fn))
+            using (var file = File.Create(GetPath()))
             {
                 Serializer.Serialize(file, segments);
             }
@@ -191,7 +190,7 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
         private Segments Load()
         {
             Segments model = null;
-            using (var file = File.OpenRead(Path.Combine(AppContext.BaseDirectory,  Consts.SegmentsModel)))
+            using (var file = File.OpenRead(GetPath()))
             {
                 model = Serializer.Deserialize<Segments>(file);
             }
@@ -199,5 +198,13 @@ namespace Hackathon.MLBox.Foundation.Engine.Services
             return model;
         }
 
+        private string GetPath()
+        {
+            string path = Path.Combine(AppContext.BaseDirectory, Consts.SegmentsModel)
+                .Replace(@"ProcessingEngine\", "")
+                .Replace(@"AutomationEngine\", "");
+
+            return path;
+        }
     }
 }

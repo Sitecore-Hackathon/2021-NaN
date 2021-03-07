@@ -20,7 +20,7 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
 
         public string Lifecycle { get; set; }
 
-        protected PredictiveRevenueListener(ILogger<IActivity> logger)
+        public PredictiveRevenueListener(ILogger<PredictiveRevenueListener> logger)
             : this(logger, "true", "false") { }
 
         /// <summary>
@@ -29,9 +29,10 @@ namespace Hackathon.MLBox.Foundation.MarketingAutomation.Activity
         /// <param name="logger">The logger.</param>
         /// <param name="truePathKey">The key of the path to take when the condition evaluates to true.</param>
         /// <param name="falsePathKey">The key of the path to take when the condition evaluates to false.</param>
-        protected PredictiveRevenueListener(ILogger<IActivity> logger, string truePathKey, string falsePathKey)
+        public PredictiveRevenueListener(ILogger<PredictiveRevenueListener> logger, string truePathKey, string falsePathKey)
             : base(logger)
         {
+            logger.LogWarning("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             this.TruePathKey = truePathKey;
             this.FalsePathKey = falsePathKey;
         }
